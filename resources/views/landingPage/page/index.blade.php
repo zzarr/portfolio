@@ -11,13 +11,15 @@
 
 <body class="bg-gray-950 text-white">
 
-    <div x-data="{ tab: 'projects' }" class="min-h-screen pb-20">
+    <div class="min-h-screen pb-20 px-4 md:px-6 lg:px-12 xl:px-20">
 
         <div x-data="navbarScroll" :class="showNavbar ? 'translate-y-0' : '-translate-y-full'"
-            class="fixed top-0 w-full z-50 bg-gray-950/80 backdrop-blur border-b border-gray-800
-           transition-transform duration-300 ease-in-out">
-            <div class="flex items-center justify-between px-4 h-14">
+            class="fixed top-0 left-0 right-0 z-50 bg-gray-950/80 backdrop-blur border-b border-gray-800
+           transition-transform duration-300 ease-in-out lg:hidden">
+
+            <div class="flex items-center justify-between px-5 h-14">
                 <div class="font-semibold">Azhar</div>
+
                 <a href="#contact" class="text-sm bg-white text-black px-3 py-1 rounded-full">
                     Contact Me
                 </a>
@@ -27,108 +29,24 @@
         <!-- SPACER -->
         <div class="h-14"></div>
 
-        <!-- 🖼️ COVER -->
-        <div class="h-36 bg-gray-800">
+        <div class="h-36 bg-gray-800 lg:rounded-t-3xl overflow-hidden">
             <!-- nanti bisa pakai image -->
         </div>
 
         <!-- 👤 PROFILE -->
-        <div class="px-4">
-            <!-- FOTO -->
-            <div class="-mt-12">
-                <img src="{{ asset('assets/profile2.png') }}" alt="Profile"
-                    class="w-24 h-24 rounded-full border-4 border-gray-950 object-cover 
-               transition-all duration-300 ease-out
-               md:hover:scale-105 md:hover:shadow-xl
-               active:scale-95">
-            </div>
-
-            <!-- INFO -->
-            <div class="mt-2">
-                <h1 class="text-lg font-semibold">Azhar</h1>
-                <p class="text-gray-400 text-sm">@azhar.dev</p>
-
-                <p class="text-sm mt-2 text-gray-300">
-                    Web Developer Laravel & JavaScript. Membangun aplikasi web modern.
-                </p>
-
-                <!-- CTA SOCIAL -->
-                <div class="flex gap-2 mt-3">
-                    <a href="#" class="border border-gray-700 px-3 py-1 rounded-full text-sm">
-                        <i class="ri-github-fill"></i>
-                    </a>
-                    <a href="#" class="border border-gray-700 px-3 py-1 rounded-full text-sm">
-                        <i class="ri-linkedin-fill"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+        @include('landingPage.components.profile')
 
         <!-- 💼 EXPERIENCE -->
-        <section id="experience" class="px-4 py-6">
-            <h2 class="text-lg font-semibold mb-4">Experience</h2>
-
-            <div class="space-y-4">
-                <div class="border border-gray-800 rounded-xl p-4 bg-gray-950">
-                    <h3 class="text-lg font-semibold text-white">B-One Corp</h3>
-
-                    <p class="mt-1 text-sm font-medium text-gray-300">
-                        Oct 2024 - Present
-                    </p>
-
-                    <p class="mt-3 text-sm font-semibold text-gray-200">
-                        User Support
-                    </p>
-
-                    <ul class="mt-3 list-disc pl-5 space-y-3 text-sm leading-7 text-gray-300 marker:text-gray-500">
-                        <li>Melayani dan menyelesaikan keluhan pengguna</li>
-                        <li>Memberikan bantuan teknis terkait aplikasi yang digunakan</li>
-                        <li>Berkomunikasi dengan tim pengembang untuk menyampaikan feedback pengguna</li>
-                        <li>Memastikan kepuasan pengguna dengan solusi yang cepat dan efektif</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        @include('landingPage.components.experience')
 
         <!-- 📂 PROJECT -->
-        <section id="project" class="px-4 py-6">
-            <h2 class="text-lg font-semibold mb-4">Projects</h2>
-
-            <div class="space-y-4">
-                <div class="border border-gray-800 rounded-xl p-4">
-                    <div class="h-40 bg-gray-800 rounded-lg mb-3"></div>
-
-                    <h3 class="font-semibold">REMIND App</h3>
-                    <p class="text-sm text-gray-400 mt-1">
-                        Sistem pengukuran tingkat stres remaja berbasis kuisioner.
-                    </p>
-
-                    <p class="text-xs text-gray-500 mt-2">
-                        Laravel • Livewire • Tailwind
-                    </p>
-
-                    <div class="flex gap-2 mt-3">
-                        <a href="#" class="text-sm underline">Github</a>
-                        <a href="#" class="text-sm underline">Demo</a>
-                    </div>
-                </div>
-            </div>
-        </section>
+        @include('landingPage.components.project')
 
         <!-- 🛠 SKILLS -->
-        <section id="skill" class="px-4 py-6">
-            <h2 class="text-lg font-semibold mb-4">Skills</h2>
-
-            <div class="grid grid-cols-2 gap-3 text-sm">
-                <div class="border border-gray-800 p-3 rounded-lg">Laravel</div>
-                <div class="border border-gray-800 p-3 rounded-lg">JavaScript</div>
-                <div class="border border-gray-800 p-3 rounded-lg">MySQL</div>
-                <div class="border border-gray-800 p-3 rounded-lg">Tailwind</div>
-            </div>
-        </section>
+        @include('landingPage.components.skills')
 
         <!-- 📬 CONTACT -->
-        <section id="contact" class="px-4 py-6 pb-24">
+        <section id="contact" class="px-2 py-6 pb-12">
             <h2 class="text-lg font-semibold mb-4">Contact</h2>
 
             <div class="space-y-3 text-sm">
@@ -144,10 +62,14 @@
             </div>
         </section>
 
+        <section id="copyright" class="px-2 py-6 text-center text-sm text-gray-500">
+            &copy; {{ date('Y') }} Azhar,.
+        </section>
+
     </div>
 
     <!-- 🔻 BOTTOM NAVBAR -->
-    <div class="fixed bottom-0 w-full bg-gray-950 border-t border-gray-800">
+    <div class="fixed bottom-0 w-full bg-gray-950 border-t border-gray-800 lg:hidden">
         <div class="flex justify-around text-xs py-2">
             <button class="flex flex-col items-center">
                 <i class="ri-briefcase-line"></i>
@@ -171,6 +93,65 @@
                 <span>Contact</span>
             </button>
         </div>
+    </div>
+
+    <!-- 🔻 DESKTOP NAVBAR -->
+    <div x-data="navbarScrollDesktop"
+        :class="showNavbar ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0 pointer-events-none'"
+        class="hidden lg:flex fixed bottom-6 left-1/2 -translate-x-1/2 z-50
+           items-center gap-6
+           px-6 py-3
+           rounded-full
+           border border-gray-800
+           bg-gray-950/80
+           backdrop-blur-xl
+           shadow-lg shadow-black/30
+           transition-all duration-300 ease-in-out">
+
+        <a href="#home"
+            class="relative group text-gray-300 hover:text-white hover:scale-110 transition-all duration-200">
+            <i class="ri-home-6-line text-lg"></i>
+            <span
+                class="absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 border border-gray-700 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Home
+            </span>
+        </a>
+
+        <a href="#experience"
+            class="relative group text-gray-300 hover:text-white hover:scale-110 transition-all duration-200">
+            <i class="ri-briefcase-line text-lg"></i>
+            <span
+                class="absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 border border-gray-700 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Experience
+            </span>
+        </a>
+
+        <a href="#project"
+            class="relative group text-gray-300 hover:text-white hover:scale-110 transition-all duration-200">
+            <i class="ri-folder-line text-lg"></i>
+            <span
+                class="absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 border border-gray-700 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Projects
+            </span>
+        </a>
+
+        <a href="#skill"
+            class="relative group text-gray-300 hover:text-white hover:scale-110 transition-all duration-200">
+            <i class="ri-code-s-slash-line text-lg"></i>
+            <span
+                class="absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 border border-gray-700 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Skills
+            </span>
+        </a>
+
+        <a href="#contact"
+            class="relative group text-gray-300 hover:text-white hover:scale-110 transition-all duration-200">
+            <i class="ri-mail-line text-lg"></i>
+            <span
+                class="absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 border border-gray-700 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Contact
+            </span>
+        </a>
     </div>
 
 </body>
