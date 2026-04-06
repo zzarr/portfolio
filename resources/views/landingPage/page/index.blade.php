@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
-    <title>Portfolio</title>
+    <title>Mohamad Azhar Syah</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="{{ asset('admin/assets/css/icons.css') }}">
 </head>
@@ -31,9 +31,7 @@
         <!-- SPACER -->
         <div class="h-14"></div>
 
-        <div class="h-36 bg-gray-800 lg:rounded-t-3xl overflow-hidden">
-            <!-- nanti bisa pakai image -->
-        </div>
+
 
         <!-- 👤 PROFILE -->
         @include('landingPage.components.profile')
@@ -45,7 +43,7 @@
         @include('landingPage.components.project')
 
         <!-- 🛠 SKILLS -->
-        @include('landingPage.components.skills')
+
 
         <!-- 📬 CONTACT -->
         <section id="contact" class="px-2 py-6 pb-12">

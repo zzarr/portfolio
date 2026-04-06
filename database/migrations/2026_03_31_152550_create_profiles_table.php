@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('profiles', function (Blueprint $table) {
             $table->id();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->unique()->constrained()->cascadeOnDelete();
             $table->string('full_name');
             $table->string('profession');
             $table->text('bio')->nullable();
@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->string('email_contact')->nullable();
             $table->string('phone')->nullable();
+            $table->string('github_url')->nullable();
+            $table->string('linkedin_url')->nullable();
+            $table->string('instagram_url')->nullable();
             $table->timestamps();
         });
     }
