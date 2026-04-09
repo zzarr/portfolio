@@ -16,7 +16,7 @@
     <!-- INFO -->
     <div class="mt-2">
         <h1 class="text-3xl font-semibold">Mohamad Azhar Syah</h1>
-        <p class="tex-lg text-gray-400 text-sm">Software Engineer</p>
+        <p class="text-xl text-gray-400 ">Software Engineer</p>
 
         <!-- summary -->
         <p class="text-sm mt-2 text-gray-300">
