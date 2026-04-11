@@ -13,6 +13,8 @@
 
 <body class="bg-gray-950 text-white">
 
+
+
     <div class="min-h-screen pb-20 px-4 md:px-6 lg:px-12 xl:px-20">
 
         <div x-data="navbarScroll" :class="showNavbar ? 'translate-y-0' : '-translate-y-full'"
@@ -20,7 +22,7 @@
            transition-transform duration-300 ease-in-out lg:hidden">
 
             <div class="flex items-center justify-between px-5 h-14">
-                <div class="font-semibold">Azhar</div>
+                <img src="{{ asset('favicon.ico') }}" alt="Logo" class="w-8 h-8 object-contain">
 
                 <a href="#contact" class="text-sm bg-white text-black px-3 py-1 rounded-full">
                     Contact Me

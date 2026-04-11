@@ -26,11 +26,11 @@
         <!-- CTA SOCIAL -->
         <div class="flex gap-2 mt-3">
             <a href="https://github.com/zzarr"
-                class="border border-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-700 hover:text-white transition-all duration-200">
+                class="border border-gray-700 px-3 py-1 rounded-full text-sm hover:bg-purple-600 hover:text-white transition-all duration-200">
                 <i class="ri-github-fill"></i>
             </a>
             <a href="https://www.linkedin.com/in/mohamad-azhar-syah/"
-                class="border border-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gray-700 hover:text-white transition-all duration-200">
+                class="border border-gray-700 px-3 py-1 rounded-full text-sm hover:bg-blue-600 hover:text-white transition-all duration-200">
                 <i class="ri-linkedin-fill"></i>
             </a>
         </div>
