@@ -20,9 +20,8 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('thumbnail')->nullable();
             $table->text('description')->nullable(); // ringkasan
-
+            $table->text('content')->nullable(); // deskripsi lengkap
             $table->string('github_url')->nullable();
-            $table->string('demo_url')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
