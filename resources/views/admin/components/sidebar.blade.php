@@ -44,8 +44,9 @@
                                     <!-- End::slide__category -->
 
                                     <!-- Start::slide -->
-                                    <li class="slide active">
-                                        <a href="index.html" class="side-menu__item active">
+                                    <li class="slide {{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.dashboard') }}"
+                                            class="side-menu__item {{ request()->is('admin/dashboard') ? 'active' : '' }}">
                                             <i class="fe fe-home side-menu__icon"></i>
                                             <span class="side-menu__label">Dashboard</span>
                                         </a>
@@ -53,8 +54,9 @@
                                     <!-- End::slide -->
 
                                     <!-- Start::slide -->
-                                    <li class="slide ">
-                                        <a href="index.html" class="side-menu__item ">
+                                    <li class="slide {{ request()->is('admin/app-settings*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.app_settings.index') }}"
+                                            class="side-menu__item {{ request()->is('admin/app-settings*') ? 'active' : '' }}">
                                             <i class="fe fe-settings side-menu__icon"></i>
                                             <span class="side-menu__label">App Settings</span>
                                         </a>
