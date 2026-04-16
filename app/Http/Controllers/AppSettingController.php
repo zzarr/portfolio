@@ -10,8 +10,9 @@ class AppSettingController extends Controller
 {
     public function index()
     {
+        $pageTitle = 'App Settings';
         $profile = Profile::first();
-        return view('admin.appsetting.index', compact('profile'));
+        return view('admin.appsetting.index', compact('profile', 'pageTitle'));
     }
 
     public function update(Request $request)

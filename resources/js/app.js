@@ -1,5 +1,9 @@
 import "./bootstrap";
 import Alpine from "alpinejs";
+//jQuery
+import $ from "jquery";
+window.$ = $;
+window.jQuery = $;
 
 window.Alpine = Alpine;
 
