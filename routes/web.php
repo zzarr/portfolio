@@ -29,8 +29,10 @@ Route::prefix('admin')->group(function () {
         Route::group(['prefix' => 'app-settings', 'as' => 'admin.app_settings.'], function () {
             Route::get('/', [AppSettingController::class, 'index'])
                 ->name('index');
-            Route::post('/', [AppSettingController::class, 'update'])
+            Route::post('/profile-password/update', [AppSettingController::class, 'update'])
                 ->name('update');
+            Route::post('/profile/photo', [AppSettingController::class, 'updateProfilePhoto'])
+                ->name('update_profile_photo');
         });
 
         Route::post('/logout', [AuthController::class, 'logout'])

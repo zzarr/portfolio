@@ -1,4 +1,7 @@
 @extends('admin.layout.app')
+@push('vite')
+    @vite(['resources/js/appsetting.js'])
+@endpush
 @section('content')
     <div class="container-fluid">
 
@@ -23,35 +26,68 @@
         <!-- ROW-1 OPEN -->
         <div class="row">
             <div class="col-xl-4 col-md-12 col-sm-12">
-                <div class="card custom-card edit-password-section">
-                    <div class="card-header">
-                        <div class="card-title">Edit Password and Profile Picture</div>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex mb-3">
-                            <img alt="User Avatar" class="rounded-circle avatar-lg avatar me-2" src="">
-                            <div class="ms-auto mt-xl-2 mt-lg-0 me-lg-2">
-                                <a href="editprofile.html" class="btn btn-primary btn-sm mt-1 mb-1"><i
-                                        class="fe fe-camera me-1 float-start mt-1"></i>Edit profile</a>
-                                <a href="javascript:void(0);" class="btn btn-danger btn-sm mt-1 mb-1"><i
-                                        class="fe fe-camera-off me-1 mt-1 float-start"></i>Delete profile</a>
+                <form id="profileUpdateForm" enctype="multipart/form-data">
+                    @csrf
+                    <div class="card custom-card edit-password-section">
+                        <div class="card-header">
+                            <div class="card-title">Edit Profile Picture</div>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="d-flex mb-3 align-items-center">
+                                <img id="profilePreview" alt="User Avatar" class="rounded-circle avatar-lg avatar me-2"
+                                    src="{{ optional($profile)->photo ? asset($profile->photo) : asset('default-avatar.png') }}"
+                                    style="width: 80px; height: 80px; object-fit: cover;">
+                                <div class="ms-auto mt-xl-2 mt-lg-0 me-lg-2">
+                                    <button id="btnEditProfile" class="btn btn-primary btn-sm mt-1 mb-1">
+                                        <i class="fe fe-camera me-1 float-start mt-1"></i>
+                                        Edit profile
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- hidden input file -->
+                            <input type="file" id="profileInput" name="photo" accept="image/*" style="display: none;">
+
+                            <div class="form-group mb-3">
+                                <label class="form-label">New Password</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="newPassword"
+                                        placeholder="Masukkan password baru" name="password">
+                                    <button class="btn btn-outline-secondary toggle-password" type="button"
+                                        data-target="#newPassword">
+                                        <i class="fe fe-eye"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label class="form-label">Confirm Password</label>
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        placeholder="Konfirmasi password" name="password_confirmation">
+                                    <button class="btn btn-outline-secondary toggle-password" type="button"
+                                        data-target="#confirmPassword">
+                                        <i class="fe fe-eye"></i>
+                                    </button>
+                                </div>
+                                <small id="passwordWarning" class="text-danger d-none">
+                                    Password tidak sama
+                                </small>
                             </div>
                         </div>
 
-                        <div class="form-group mb-3">
-                            <label class="form-label">New Password</label>
-                            <input type="password" class="form-control" value="password">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" value="password">
+
+                        <div class="card-footer text-end">
+                            <button type="submit" id="btnUpdateProfile" class="btn btn-primary">
+                                Updated
+                            </button>
+                            <button class="btn btn-danger">
+                                Cancel
+                            </button>
                         </div>
                     </div>
-                    <div class="card-footer text-end">
-                        <a href="javascript:void(0);" class="btn btn-primary">Updated</a>
-                        <a href="javascript:void(0);" class="btn btn-danger">Cancel</a>
-                    </div>
-                </div>
+                </form>
                 <div class="card custom-card panel-theme">
                     <div class="card-header">
                         <div class="float-start">
@@ -101,7 +137,8 @@
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-label" for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="email address">
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                placeholder="email address">
                         </div>
                         <div class="form-group mb-3">
                             <label class="form-label" for="exampleInputnumber">Conatct Number</label>

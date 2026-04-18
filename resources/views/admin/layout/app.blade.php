@@ -9,7 +9,7 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <title>{{ $pageTitle ?? 'Dashboard' }}</title>
     @vite(['resources/css/admin.css', 'resources/js/admin.js'])
-
+    @stack('vite')
     @include('admin.components.header-css')
 </head>
 
