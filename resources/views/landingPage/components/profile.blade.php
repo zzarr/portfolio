@@ -6,7 +6,7 @@
 <div class="px-4">
     <!-- FOTO -->
     <div class="-mt-12 relative z-10">
-        <img src="{{ asset('assets/profile2.png') }}" alt="Profile"
+        <img src="{{ Storage::url($profile->photo) }}" alt="Profile"
             class="w-30 h-30 rounded-full border-4 border-gray-950 object-cover 
                transition-all duration-300 ease-out
                md:hover:scale-105 md:hover:shadow-xl

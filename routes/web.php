@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LandingPageController;
 //Auth
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AppSettingController;
 
-Route::get('/', function () {
-    return view('landingPage.page.index');
-});
+Route::get('/', [LandingPageController::class, 'index']);
+
+
 
 Route::prefix('admin')->group(function () {
 

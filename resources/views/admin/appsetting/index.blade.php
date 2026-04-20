@@ -36,7 +36,7 @@
                         <div class="card-body">
                             <div class="d-flex mb-3 align-items-center">
                                 <img id="profilePreview" alt="User Avatar" class="rounded-circle avatar-lg avatar me-2"
-                                    src="{{ optional($profile)->photo ? asset($profile->photo) : asset('default-avatar.png') }}"
+                                    src="{{ optional($profile)->photo ? Storage::url($profile->photo) : asset('default-avatar.png') }}"
                                     style="width: 80px; height: 80px; object-fit: cover;">
                                 <div class="ms-auto mt-xl-2 mt-lg-0 me-lg-2">
                                     <button id="btnEditProfile" class="btn btn-primary btn-sm mt-1 mb-1">
