@@ -1,3 +1,5 @@
+$(".dropify").dropify();
+
 $(function () {
     const profilePreview = $("#profilePreview");
     const profileInput = $("#profileInput");

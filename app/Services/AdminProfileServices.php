@@ -51,4 +51,21 @@ class AdminProfileServices
             'password' => Hash::make($password)
         ]);
     }
+
+    public function updateProfile($user, ?string $fullName, ?string $email, ?string $phone, ?string $profession): void
+    {
+        $data = [];
+
+        if ($fullName) {
+            $data['name'] = $fullName;
+        }
+
+        if ($email) {
+            $data['email'] = $email;
+        }
+
+        if (!empty($data)) {
+            $user->update($data);
+        }
+    }
 }
