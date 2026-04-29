@@ -1,3 +1,5 @@
+import { Notify } from "notiflix/build/notiflix-notify-aio";
+
 $(".dropify").dropify();
 
 $(function () {
@@ -88,10 +90,31 @@ $(function () {
             processData: false,
             contentType: false,
             success: function (response) {
-                alert(response.message);
+                Notify.success("Berhasil update profile");
             },
             error: function (xhr) {
                 console.log(xhr.responseJSON);
+                Notify.failure("Gagal update profile");
+            },
+        });
+    });
+
+    $("#profileDetailUpdateForm").on("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        $.ajax({
+            url: "/admin/app-settings/profile-password/update",
+            method: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                Notify.success("Berhasil update profile");
+            },
+            error: function (xhr) {
+                console.log(xhr.responseJSON);
+                Notify.failure("Gagal update profile");
             },
         });
     });

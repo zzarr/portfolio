@@ -113,56 +113,61 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-xl-8 col-md-12 col-sm-12">
                 <div class="card custom-card">
-                    <div class="card-header">
-                        <h3 class="card-title">Edit Profile</h3>
-                    </div>
-                    <div class="card-body">
+                    <form id="profileDetailUpdateForm" enctype="multipart/form-data">
+                        @csrf
+                        <div class="card-header">
+                            <h3 class="card-title">Edit Profile</h3>
+                        </div>
+                        <div class="card-body">
 
-                        <div class="form-group mb-3">
-                            <label class="form-label" for="exampleInputname">Full name</label>
-                            <input type="text" class="form-control" id="exampleInputname" placeholder="Full Name"
-                                value="{{ $profile->full_name }}">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="">Profession</label>
-                            <input type="text" class="form-control" id="profession" placeholder="Profession"
-                                value="{{ $profile->profession }}">
-                        </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="exampleInputname">Full name</label>
+                                <input type="text" class="form-control" id="exampleInputname" placeholder="Full Name"
+                                    value="{{ $profile->full_name }}">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="" class="from-label">Profession</label>
+                                <input type="text" class="form-control" id="profession" placeholder="Profession"
+                                    value="{{ $profile->profession }}">
+                            </div>
 
-                        <div class="form-group mb-3">
-                            <label class="form-label" for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1"
-                                placeholder="email address" value="{{ $profile->email }}">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="form-label" for="exampleInputnumber">Contact Number</label>
-                            <input type="number" class="form-control" id="exampleInputnumber" placeholder="ph number"
-                                value="{{ $profile->phone }}">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="form-label">About Me</label>
-                            <textarea class="form-control" rows="6">{{ $profile->bio }}</textarea>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="form-label">Github Profile</label>
-                            <input class="form-control" placeholder="http://github.com/username" type="text"
-                                value="{{ optional($profile)->github_url }}">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="form-label">Backround image</label>
-                            <input type="file" id="input-file-now-custom-1" class="dropify"
-                                data-default-file="{{ asset('assets/cover.jpg') }}" name="cover_image" />
-                        </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                    placeholder="email address" value="{{ $profile->email_contact }}">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label" for="exampleInputnumber">Contact Number</label>
+                                <input type="number" class="form-control" id="exampleInputnumber"
+                                    placeholder="ph number" value="{{ $profile->phone }}">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">About Me</label>
+                                <textarea class="form-control" rows="6">{{ $profile->bio }}</textarea>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Github Profile</label>
+                                <input class="form-control" placeholder="http://github.com/username" type="text"
+                                    value="{{ optional($profile)->github_url }}">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label class="form-label">Backround image</label>
+                                <input type="file" id="input-file-now-custom-1" class="dropify"
+                                    data-default-file="{{ asset('assets/cover.jpg') }}" name="cover_image" />
+                            </div>
 
-                    </div>
-                    <div class="card-footer text-end">
-                        <a href="javascript:void(0);" class="btn btn-success mt-1">Save</a>
-                        <a href="javascript:void(0);" class="btn btn-danger mt-1">Cancel</a>
-                    </div>
+                        </div>
+                        <div class="card-footer text-end">
+                            <a href="javascript:void(0);" class="btn btn-success mt-1">Save</a>
+                            <a href="javascript:void(0);" class="btn btn-danger mt-1">Cancel</a>
+                        </div>
+                    </form>
                 </div>
             </div>
+
         </div>
         <!-- ROW-1 CLOSED -->
 
