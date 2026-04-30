@@ -80,7 +80,7 @@
                             data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
                             <div class="d-flex align-items-center">
                                 <div class="">
-                                    <img src="{{ asset('admin/assets/images/faces/9.jpg') }}" alt="img"
+                                    <img src="{{ Storage::url(Auth::user()->profile->photo) }}" alt="img"
                                         class="rounded-circle avatar  profile-user brround cover-image">
                                 </div>
                             </div>

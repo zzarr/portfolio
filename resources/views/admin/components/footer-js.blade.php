@@ -34,8 +34,16 @@
 
 
 
-<!-- Custom-Switcher JS -->
-<script src="{{ asset('admin/assets/js/custom-switcher.min.js') }}"></script>
+<!-- Custom-Switcher JS
+<script src="{{ asset('admin/assets/js/custom-switcher.min.js') }}"></script>-->
+
+<!-- Prism JS -->
+<script src="{{ asset('admin/assets/libs/prismjs/prism.js') }}"></script>
+<script src="{{ asset('admin/assets/js/prism-custom.js') }}"></script>
+
+<!-- Gallery JS -->
+<script src="{{ asset('admin/assets/libs/glightbox/js/glightbox.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/gallery.js') }}"></script>
 
 
 <!-- Custom JS -->

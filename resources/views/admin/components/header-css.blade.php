@@ -25,3 +25,9 @@
 
 <!-- Choices Css -->
 <link rel="stylesheet" href="{{ asset('admin/assets/libs/choices.js/public/assets/styles/choices.min.css') }}">
+
+<!-- Prism CSS -->
+<link rel="stylesheet" href="{{ asset('admin/assets/libs/prismjs/themes/prism-coy.min.css') }}">
+
+<!-- GLightbox CSS -->
+<link rel="stylesheet" href="{{ asset('admin/assets/libs/glightbox/css/glightbox.min.css') }}">
