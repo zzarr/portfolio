@@ -3,16 +3,18 @@
     <!-- Start::main-sidebar-header -->
     <div class="main-sidebar-header">
         <a href="index.html" class="header-logo">
-            <img src="{{ asset('admin/assets/images/brand-logos/desktop-logo.png') }}" alt="logo1" class="desktop-logo">
-            <img src="{{ asset('admin/assets/images/brand-logos/toggle-logo.png') }}" alt="logo2" class="toggle-logo">
+            <img src="{{ asset('admin/assets/images/brand-logos/desktop-logo.png') }}" alt="logo1" class="desktop-logo"
+                width="120">
+            <img src="{{ asset('admin/assets/images/brand-logos/toggle-logo.png') }}" alt="logo2" class="toggle-logo"
+                width="30" height="30">
             <img src="{{ asset('admin/assets/images/brand-logos/desktop-white.png') }}" alt="logo1"
-                class="desktop-dark">
-            <img src="{{ asset('admin/assets/images/brand-logos/toggle-dark.png') }}" alt="logo2"
-                class="toggle-dark">
+                class="desktop-dark" width="120">
+            <img src="{{ asset('admin/assets/images/brand-logos/toggle-dark.png') }}" alt="logo2" class="toggle-dark"
+                width="30" height="30">
             <img src="{{ asset('admin/assets/images/brand-logos/desktop-white.png') }}" alt="logo1"
-                class="desktop-white">
+                class="desktop-white" width="120">
             <img src="{{ asset('admin/assets/images/brand-logos/toggle-white.png') }}" alt="logo2"
-                class="toggle-white">
+                class="toggle-white" width="30" height="30">
         </a>
     </div>
     <!-- End::main-sidebar-header -->
@@ -113,7 +115,8 @@
                                                             class="side-menu__item">Nested-2-1</a>
                                                     </li>
                                                     <li class="slide has-sub">
-                                                        <a href="javascript:void(0);" class="side-menu__item">Nested-2-2
+                                                        <a href="javascript:void(0);"
+                                                            class="side-menu__item">Nested-2-2
                                                             <i class="fe fe-chevron-right side-menu__angle"></i></a>
                                                         <ul class="slide-menu child3">
                                                             <li class="slide">
