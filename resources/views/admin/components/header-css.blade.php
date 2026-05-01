@@ -31,3 +31,6 @@
 
 <!-- GLightbox CSS -->
 <link rel="stylesheet" href="{{ asset('admin/assets/libs/glightbox/css/glightbox.min.css') }}">
+
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="{{ asset('datatables/datatables.min.css') }}">

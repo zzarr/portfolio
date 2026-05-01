@@ -84,11 +84,14 @@ $(function () {
         const formData = new FormData(this);
 
         $.ajax({
-            url: "/admin/app-settings/profile-password/update",
+            url: "/admin/app-settings/profile/update",
             method: "POST",
             data: formData,
             processData: false,
             contentType: false,
+            beforeSend: function () {
+                Notify.info("Mengupdate profile...");
+            },
             success: function (response) {
                 Notify.success("Berhasil update profile");
             },
@@ -104,11 +107,14 @@ $(function () {
         const formData = new FormData(this);
 
         $.ajax({
-            url: "/admin/app-settings/profile-password/update",
+            url: "/admin/app-settings/profile/update",
             method: "POST",
             data: formData,
             processData: false,
             contentType: false,
+            beforeSend: function () {
+                Notify.info("Mengupdate profile...");
+            },
             success: function (response) {
                 Notify.success("Berhasil update profile");
             },

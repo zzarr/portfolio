@@ -126,42 +126,43 @@
                             <div class="form-group mb-3">
                                 <label class="form-label" for="exampleInputname">Full name</label>
                                 <input type="text" class="form-control" id="exampleInputname" placeholder="Full Name"
-                                    value="{{ $profile->full_name }}">
+                                    value="{{ $profile->full_name }}" name="full_name">
                             </div>
                             <div class="form-group mb-3">
                                 <label for="" class="from-label">Profession</label>
                                 <input type="text" class="form-control" id="profession" placeholder="Profession"
-                                    value="{{ $profile->profession }}">
+                                    value="{{ $profile->profession }}" name="profession">
                             </div>
 
                             <div class="form-group mb-3">
                                 <label class="form-label" for="exampleInputEmail1">Email address</label>
                                 <input type="email" class="form-control" id="exampleInputEmail1"
-                                    placeholder="email address" value="{{ $profile->email_contact }}">
+                                    placeholder="email address" value="{{ $profile->email_contact }}"
+                                    name="email_contact">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label" for="exampleInputnumber">Contact Number</label>
                                 <input type="number" class="form-control" id="exampleInputnumber"
-                                    placeholder="ph number" value="{{ $profile->phone }}">
+                                    placeholder="ph number" value="{{ $profile->phone }}" name="phone">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">About Me</label>
-                                <textarea class="form-control" rows="6">{{ $profile->bio }}</textarea>
+                                <textarea class="form-control" rows="6" name="bio">{{ $profile->bio }}</textarea>
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Github Profile</label>
                                 <input class="form-control" placeholder="http://github.com/username" type="text"
-                                    value="{{ optional($profile)->github_url }}">
+                                    value="{{ optional($profile)->github_url }}" name="github_url">
                             </div>
                             <div class="form-group mb-3">
                                 <label class="form-label">Backround image</label>
                                 <input type="file" id="input-file-now-custom-1" class="dropify"
-                                    data-default-file="{{ asset('assets/cover.jpg') }}" name="cover_image" />
+                                    data-default-file="{{ asset('assets/cover.jpg') }}" name="background_image" />
                             </div>
 
                         </div>
                         <div class="card-footer text-end">
-                            <a href="javascript:void(0);" class="btn btn-success mt-1">Save</a>
+                            <button type="submit" class="btn btn-success mt-1">Save</button>
                             <a href="javascript:void(0);" class="btn btn-danger mt-1">Cancel</a>
                         </div>
                     </form>

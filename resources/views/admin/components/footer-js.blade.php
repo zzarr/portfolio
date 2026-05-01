@@ -48,3 +48,6 @@
 
 <!-- Custom JS -->
 <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
+
+<!-- DataTables JS -->
+<script src="{{ asset('datatables/datatables.min.js') }}"></script>
