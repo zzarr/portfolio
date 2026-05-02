@@ -66,8 +66,9 @@
                                     <!-- End::slide -->
 
                                     <!-- Start::slide -->
-                                    <li class="slide ">
-                                        <a href="index.html" class="side-menu__item ">
+                                    <li class="slide {{ request()->is('admin/experience*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.experience.index') }}"
+                                            class="side-menu__item {{ request()->is('admin/experience*') ? 'active' : '' }}">
                                             <i class="fe fe-star side-menu__icon"></i>
                                             <span class="side-menu__label">Experience</span>
                                         </a>

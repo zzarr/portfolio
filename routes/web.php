@@ -5,6 +5,7 @@ use App\Http\Controllers\LandingPageController;
 //Auth
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AppSettingController;
+use App\Http\Controllers\ExperienceController;
 
 Route::get('/', [LandingPageController::class, 'index']);
 
@@ -34,6 +35,11 @@ Route::prefix('admin')->group(function () {
                 ->name('update');
             Route::post('/profile/photo', [AppSettingController::class, 'updateProfilePhoto'])
                 ->name('update_profile_photo');
+        });
+
+        Route::group(['prefix' => 'experience', 'as' => 'admin.experience.'], function () {
+            Route::get('/', [ExperienceController::class, 'index'])
+                ->name('index');
         });
 
         Route::post('/logout', [AuthController::class, 'logout'])

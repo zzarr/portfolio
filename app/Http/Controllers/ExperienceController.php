@@ -6,5 +6,8 @@ use Illuminate\Http\Request;
 
 class ExperienceController extends Controller
 {
-    //
+    public function index()
+    {
+        return view('admin.experience.index');
+    }
 }
