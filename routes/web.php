@@ -40,6 +40,8 @@ Route::prefix('admin')->group(function () {
         Route::group(['prefix' => 'experience', 'as' => 'admin.experience.'], function () {
             Route::get('/', [ExperienceController::class, 'index'])
                 ->name('index');
+            Route::get('/data', [ExperienceController::class, 'data'])
+                ->name('data');
         });
 
         Route::post('/logout', [AuthController::class, 'logout'])
