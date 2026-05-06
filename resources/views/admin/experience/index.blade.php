@@ -18,6 +18,18 @@
                     </nav>
                 </div>
             </div>
+            <div class="ms-auto pageheader-btn">
+                <button type="button" class="btn btn-primary btn-wave waves-effect waves-light me-2" data-bs-toggle="modal"
+                    data-bs-target="#add-experience">
+
+                    <i class="fe fe-plus mx-1 align-middle"></i>
+                    Tambah Data
+                </button>
+                <button type="button" class="btn btn-success btn-wave waves-effect waves-light"> <i
+                        class="fe fe-log-in mx-1 align-middle"></i>Export Data</button>
+
+            </div>
+            @include('admin.experience.add-modal')
         </div>
 
         <div class="row">
