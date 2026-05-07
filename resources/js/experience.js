@@ -8,11 +8,39 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         responsive: true,
+        pageLength: 10,
+        lengthChange: true,
+        autoWidth: false,
 
         ajax: {
             url: "/admin/experience/data",
             type: "GET",
         },
+
+        dom: "Bfrtip",
+
+        buttons: [
+            {
+                extend: "print",
+                text: '<i class="ri-printer-line"></i> Print',
+                className: "btn btn-primary btn-sm",
+            },
+            {
+                extend: "excel",
+                text: '<i class="ri-file-excel-line"></i> Excel',
+                className: "btn btn-success btn-sm",
+            },
+            {
+                extend: "pdf",
+                text: '<i class="ri-file-pdf-line"></i> PDF',
+                className: "btn btn-danger btn-sm",
+            },
+            {
+                extend: "colvis",
+                text: '<i class="ri-eye-line"></i> Column',
+                className: "btn btn-info btn-sm",
+            },
+        ],
 
         columns: [
             {

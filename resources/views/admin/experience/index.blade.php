@@ -2,6 +2,8 @@
 @push('vite')
     @vite(['resources/js/experience.js'])
 @endpush
+<!-- Di dalam Blade -->
+
 @section('content')
     <div class="container-fluid">
 

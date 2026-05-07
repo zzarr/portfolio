@@ -34,7 +34,9 @@
         "datatables.net-staterestore-bs5": "^1.4.3",
         "dropify": "^0.2.2",
         "jquery": "^4.0.0",
+        "jszip": "^3.10.1",
         "notiflix": "^3.2.8",
-        "notifyjs-browser": "^0.4.2"
+        "notifyjs-browser": "^0.4.2",
+        "pdfmake": "^0.3.8"
     }
 }

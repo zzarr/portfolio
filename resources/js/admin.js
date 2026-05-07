@@ -86,6 +86,31 @@ import "datatables.net-staterestore-bs5/css/stateRestore.bootstrap5.min.css";
 
 /*
 |--------------------------------------------------------------------------
+| BUTTONS EXPORT
+|--------------------------------------------------------------------------
+*/
+
+// HTML5 export buttons
+import "datatables.net-buttons/js/buttons.html5";
+
+// Print button
+import "datatables.net-buttons/js/buttons.print";
+
+// Optional: colvis
+import "datatables.net-buttons/js/buttons.colVis";
+
+// JSZip for Excel
+import JSZip from "jszip";
+window.JSZip = JSZip;
+
+// PDFMake for PDF
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+
+pdfMake.vfs = pdfFonts.vfs;
+
+/*
+|--------------------------------------------------------------------------
 | INIT
 |--------------------------------------------------------------------------
 */
