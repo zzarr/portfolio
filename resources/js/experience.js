@@ -1,10 +1,12 @@
+import { Notify } from "notiflix";
+
 //datatables
 $(document).ready(function () {
     // =========================
     // DATATABLES
     // =========================
 
-    $("#experience").DataTable({
+    const table = $("#experience").DataTable({
         processing: true,
         serverSide: true,
         responsive: true,
@@ -118,17 +120,23 @@ $(document).ready(function () {
         }
     });
 
-    // =========================
-    // SUBMIT FORM AJAX
-    // =========================
     $("#addExperienceForm").on("submit", function (e) {
         e.preventDefault();
 
         let form = $(this);
         let button = form.find('button[type="submit"]');
 
+        // =========================
+        // CLOSE MODAL LANGSUNG
+        // =========================
+        const modalElement = document.getElementById("add-experience");
+
+        const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+
+        modalInstance.hide();
+
         $.ajax({
-            url: "{{ route('experience.store') }}",
+            url: "/admin/experience/store",
             type: "POST",
             data: form.serialize(),
 
@@ -138,38 +146,30 @@ $(document).ready(function () {
             },
 
             success: function (response) {
-                // notify success
-                notify.success("Experience berhasil ditambahkan");
+                Notify.success("Experience berhasil ditambahkan");
 
-                // reset form
                 form[0].reset();
 
-                // reset detail jadi 1 item
                 $("#experience-detail-wrapper").html(`
-                        <div class="input-group mb-2 experience-detail-item">
+                <div class="input-group mb-2 experience-detail-item">
 
-                            <input type="text"
-                                name="details[]"
-                                class="form-control"
-                                placeholder="Contoh: Membuat dan maintenance website"
-                                required>
+                    <input type="text"
+                        name="details[]"
+                        class="form-control"
+                        placeholder="Contoh: Membuat dan maintenance website"
+                        required>
 
-                            <button type="button"
-                                class="btn btn-danger remove-detail">
-                                <i class="ri-delete-bin-line"></i>
-                            </button>
+                    <button type="button"
+                        class="btn btn-danger remove-detail">
+                        <i class="ri-delete-bin-line"></i>
+                    </button>
 
-                        </div>
-                    `);
+                </div>
+            `);
 
-                // aktifkan end date lagi
                 $("#end_date").prop("disabled", false);
 
-                // close modal
-                $("#add-experience").modal("hide");
-
-                // reload datatable kalau ada
-                // $('#yourTable').DataTable().ajax.reload();
+                table.ajax.reload(null, false);
             },
 
             error: function (xhr) {
@@ -177,10 +177,10 @@ $(document).ready(function () {
                     let errors = xhr.responseJSON.errors;
 
                     $.each(errors, function (key, value) {
-                        notify.error(value[0]);
+                        Notify.error(value[0]);
                     });
                 } else {
-                    notify.error("Terjadi kesalahan");
+                    Notify.error("Terjadi kesalahan");
                 }
             },
 
@@ -189,5 +189,44 @@ $(document).ready(function () {
                 button.html("Save changes");
             },
         });
+    });
+
+    // =========================
+    // DELETE EXPERIENCE
+    // =========================
+    $(document).on("click", ".delete-experience", function () {
+        let id = $(this).data("id");
+
+        Confirm.show(
+            "Hapus Data",
+            "Yakin ingin menghapus experience ini?",
+            "Ya, Hapus",
+            "Batal",
+
+            function okCb() {
+                $.ajax({
+                    url: `/admin/experience/destroy/${id}`,
+                    type: "DELETE",
+
+                    beforeSend: function () {
+                        Notify.warning("Menghapus data...");
+                    },
+
+                    success: function (response) {
+                        Notify.success(response.message);
+
+                        table.ajax.reload(null, false);
+                    },
+
+                    error: function () {
+                        Notify.failure("Gagal menghapus data");
+                    },
+                });
+            },
+
+            function cancelCb() {
+                Notify.warning("Penghapusan dibatalkan");
+            },
+        );
     });
 });

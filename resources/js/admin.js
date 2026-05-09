@@ -9,6 +9,19 @@ import "dropify/dist/css/dropify.min.css";
 window.$ = $;
 window.jQuery = $;
 
+import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { Confirm } from "notiflix/build/notiflix-confirm-aio";
+window.Notify = Notify;
+window.Confirm = Confirm;
+
+// =========================
+// CSRF TOKEN
+// =========================
+$.ajaxSetup({
+    headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+    },
+});
 /*
 |--------------------------------------------------------------------------
 | DATATABLES CORE

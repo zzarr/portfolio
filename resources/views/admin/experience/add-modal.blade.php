@@ -2,7 +2,7 @@
 <div class="modal fade" id="add-experience" tabindex="-1" aria-labelledby="add-experience-label" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
-            <form id="addExperienceForm">
+            <form id="addExperienceForm" enctype="multipart/form-data">
                 <div class="modal-header">
                     <h5 class="modal-title" id="add-experience-label">Tambah Experience</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -83,7 +83,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary btn-wave waves-effect waves-light"
                         data-bs-dismiss="modal">Close</button>
-                    <button type="submit" form="#addExperienceForm"
+                    <button type="submit" id="addExperienceBtn"
                         class="btn btn-primary btn-wave waves-effect waves-light">Save changes</button>
                 </div>
             </form>

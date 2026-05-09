@@ -42,6 +42,9 @@ Route::prefix('admin')->group(function () {
                 ->name('index');
             Route::get('/data', [ExperienceController::class, 'data'])
                 ->name('data');
+            Route::post('/store', [ExperienceController::class, 'store'])
+                ->name('store');
+            Route::delete('/destroy/{id}', [ExperienceController::class, 'destroy'])->name('destroy');
         });
 
         Route::post('/logout', [AuthController::class, 'logout'])
