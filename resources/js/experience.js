@@ -192,6 +192,33 @@ $(document).ready(function () {
     });
 
     // =========================
+    // GET DETAIL EXPERIENCE
+    // =========================
+    $(document).on("click", ".edit-experience", function () {
+        let id = $(this).data("id");
+
+        $.ajax({
+            url: `/admin/experience/show/${id}`,
+            type: "GET",
+
+            success: function (response) {
+                let data = response.data;
+
+                $("#edit_id").val(data.id);
+                $("#edit_company_name").val(data.company_name);
+                $("#edit_position").val(data.position);
+                $("#edit_location").val(data.location);
+                $("#edit_start_date").val(data.start_date);
+                $("#edit_end_date").val(data.end_date);
+                $("#edit_description").val(data.description);
+
+                $("#edit_is_current").prop("checked", data.is_current);
+
+                $("#edit-experience-modal").modal("show");
+            },
+        });
+    });
+    // =========================
     // DELETE EXPERIENCE
     // =========================
     $(document).on("click", ".delete-experience", function () {

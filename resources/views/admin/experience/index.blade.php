@@ -30,6 +30,7 @@
 
             </div>
             @include('admin.experience.add-modal')
+            @include('admin.experience.edit-modal')
         </div>
 
         <div class="row">

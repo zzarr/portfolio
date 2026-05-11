@@ -61,6 +61,49 @@ class ExperienceServices
         }
     }
 
+    /**
+     * Get experience with details
+     */
+
+    public function getExperienceWithDetails(int $id): Experience
+    {
+        return Experience::with('details')->findOrFail($id);
+    }
+
+    /**
+     * Update experience and its details
+     */
+    public function updateExperience(int $id, array $data): Experience
+    {
+        return DB::transaction(function () use ($id, $data) {
+
+            // update experience
+            $experience = Experience::findOrFail($id);
+            $experience->update([
+                'company_name' => $data['company_name'],
+                'position'     => $data['position'],
+                'start_date'   => $data['start_date'],
+                'end_date'     => $data['end_date'] ?? null,
+                'is_current'   => $data['is_current'] ?? false,
+            ]);
+
+            // delete old details
+            ExperienceDetail::where('experience_id', $id)->delete();
+
+            // create new details
+            $this->storeExperienceDetails(
+                $experience->id,
+                $data['details'] ?? []
+            );
+
+            return $experience;
+        });
+    }
+
+    /**
+     * Delete experience and its details
+     */
+
     public function deleteExperience(int $id): void
     {
         DB::transaction(function () use ($id) {

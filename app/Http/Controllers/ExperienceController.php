@@ -35,8 +35,9 @@ class ExperienceController extends Controller
                 return '
         <div class="btn-list">
 
-            <button type="button"
-                class="btn btn-sm btn-warning btn-wave">
+           <button type="button"
+                class="btn btn-sm btn-warning btn-wave edit-experience"
+                data-id="' . $row->id . '">
                 <i class="ri-pencil-line"></i>
             </button>
 
@@ -71,6 +72,38 @@ class ExperienceController extends Controller
         return response()->json([
             'success' => true,
             'message' => 'Experience berhasil ditambahkan'
+        ]);
+    }
+
+    //tampilkan data experience
+    public function show($id, ExperienceServices $services)
+    {
+        $experience = $services->getExperienceWithDetails($id);
+
+        return response()->json([
+            'success' => true,
+            'data' => $experience
+        ]);
+    }
+
+    //update data experience
+    public function update(Request $request, $id, ExperienceServices $services)
+    {
+        $data = $request->validate([
+            'company_name' => 'required|string|max:255',
+            'position'     => 'required|string|max:255',
+            'start_date'   => 'required|date',
+            'end_date'     => 'nullable|date|after_or_equal:start_date',
+            'is_current'   => 'sometimes|boolean',
+            'details'      => 'sometimes|array',
+            'details.*'    => 'sometimes|string|max:1000',
+        ]);
+
+        $services->updateExperience($id, $data);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Experience berhasil diperbarui'
         ]);
     }
 
