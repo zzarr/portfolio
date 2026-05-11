@@ -9,6 +9,19 @@ import "dropify/dist/css/dropify.min.css";
 window.$ = $;
 window.jQuery = $;
 
+import { Notify } from "notiflix/build/notiflix-notify-aio";
+import { Confirm } from "notiflix/build/notiflix-confirm-aio";
+window.Notify = Notify;
+window.Confirm = Confirm;
+
+// =========================
+// CSRF TOKEN
+// =========================
+$.ajaxSetup({
+    headers: {
+        "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+    },
+});
 /*
 |--------------------------------------------------------------------------
 | DATATABLES CORE
@@ -83,6 +96,31 @@ import "datatables.net-select-bs5/css/select.bootstrap5.min.css";
 // StateRestore
 import "datatables.net-staterestore-bs5";
 import "datatables.net-staterestore-bs5/css/stateRestore.bootstrap5.min.css";
+
+/*
+|--------------------------------------------------------------------------
+| BUTTONS EXPORT
+|--------------------------------------------------------------------------
+*/
+
+// HTML5 export buttons
+import "datatables.net-buttons/js/buttons.html5";
+
+// Print button
+import "datatables.net-buttons/js/buttons.print";
+
+// Optional: colvis
+import "datatables.net-buttons/js/buttons.colVis";
+
+// JSZip for Excel
+import JSZip from "jszip";
+window.JSZip = JSZip;
+
+// PDFMake for PDF
+import pdfMake from "pdfmake/build/pdfmake";
+import pdfFonts from "pdfmake/build/vfs_fonts";
+
+pdfMake.vfs = pdfFonts.vfs;
 
 /*
 |--------------------------------------------------------------------------

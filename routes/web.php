@@ -40,6 +40,19 @@ Route::prefix('admin')->group(function () {
         Route::group(['prefix' => 'experience', 'as' => 'admin.experience.'], function () {
             Route::get('/', [ExperienceController::class, 'index'])
                 ->name('index');
+            // DataTables route
+            Route::get('/data', [ExperienceController::class, 'data'])
+                ->name('data');
+
+            // CRUD routes
+            Route::post('/store', [ExperienceController::class, 'store'])
+                ->name('store');
+            Route::get('/show/{id}', [ExperienceController::class, 'show'])
+                ->name('show');
+            Route::put('/update/{id}', [ExperienceController::class, 'update'])
+                ->name('update');
+            Route::delete('/destroy/{id}', [ExperienceController::class, 'destroy'])
+                ->name('destroy');
         });
 
         Route::post('/logout', [AuthController::class, 'logout'])
