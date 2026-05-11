@@ -1,6 +1,6 @@
 <!-- add modal -->
 <div class="modal fade" id="add-experience" tabindex="-1" aria-labelledby="add-experience-label" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="add-experience-label">Tambah Experience</h5>
