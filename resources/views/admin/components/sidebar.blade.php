@@ -84,6 +84,17 @@
                                     </li>
                                     <!-- End::slide -->
 
+                                    <!-- Start::slide for tags -->
+                                    <li class="slide {{ request()->is('admin/tag*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.tag.index') }}"
+                                            class="side-menu__item {{ request()->is('admin/tag*') ? 'active' : '' }}">
+                                            <i class="fe fe-tag side-menu__icon"></i>
+                                            <span class="side-menu__label">Tags</span>
+                                        </a>
+                                    </li>
+                                    <!-- End::slide for tags -->
+
+
 
 
 

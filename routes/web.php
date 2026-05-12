@@ -6,6 +6,7 @@ use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AppSettingController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\TagController;
 
 Route::get('/', [LandingPageController::class, 'index']);
 
@@ -53,6 +54,11 @@ Route::prefix('admin')->group(function () {
                 ->name('update');
             Route::delete('/destroy/{id}', [ExperienceController::class, 'destroy'])
                 ->name('destroy');
+        });
+
+        Route::group(['prefix' => 'tag', 'as' => 'admin.tag.'], function () {
+            Route::get('/', [TagController::class, 'index'])
+                ->name('index');
         });
 
         Route::post('/logout', [AuthController::class, 'logout'])
