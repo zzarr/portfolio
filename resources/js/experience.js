@@ -340,27 +340,29 @@ $(document).ready(function () {
     });
 
     // =========================
-    // TAMBAH DETAIL
+    // TAMBAH DETAIL EDIT
     // =========================
-    $("#add-detail").on("click", function () {
+    $("#edit-add-detail").on("click", function () {
         let html = `
-                <div class="input-group mb-2 experience-detail-item">
+        <div class="input-group mb-2 experience-detail-item">
 
-                    <input type="text"
-                        name="details[]"
-                        class="form-control"
-                        placeholder="Contoh: Membuat dan maintenance website"
-                        required>
+            <input type="text"
+                name="details[]"
+                class="form-control"
+                placeholder="Contoh: Membuat dan maintenance website"
+                required>
 
-                    <button type="button"
-                        class="btn btn-danger remove-detail">
-                        <i class="ri-delete-bin-line"></i>
-                    </button>
+            <button type="button"
+                class="btn btn-danger remove-detail">
 
-                </div>
-            `;
+                <i class="ri-delete-bin-line"></i>
 
-        $("#experience-detail-wrapper").append(html);
+            </button>
+
+        </div>
+    `;
+
+        $("#edit-experience-detail-wrapper").append(html);
     });
 
     // =========================

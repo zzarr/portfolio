@@ -33,6 +33,15 @@
                 class="border border-gray-700 px-3 py-1 rounded-full text-sm hover:bg-blue-600 hover:text-white transition-all duration-200">
                 <i class="ri-linkedin-fill"></i>
             </a>
+            <!-- instagram -->
+            <a href="#"
+                class="border border-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gradient-to-tr 
+               hover:from-[#405DE6] 
+               hover:via-[#E1306C] 
+               hover:to-[#FFDC80] 
+               hover:text-white transition-all duration-200">
+                <i class="ri-instagram-fill"></i>
+            </a>
         </div>
     </div>
 </div>
