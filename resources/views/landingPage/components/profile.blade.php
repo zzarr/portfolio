@@ -35,7 +35,7 @@
             </a>
             <!-- instagram -->
             <a href="#"
-                class="border border-gray-700 px-3 py-1 rounded-full text-sm hover:bg-gradient-to-tr 
+                class="border border-gray-700 px-3 py-1 rounded-full text-sm hover:bg-linear-to-tr 
                hover:from-[#405DE6] 
                hover:via-[#E1306C] 
                hover:to-[#FFDC80] 

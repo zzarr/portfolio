@@ -1,0 +1,29 @@
+div.dt-button-collection {
+    background: #fff !important;
+    border-radius: 12px;
+    padding: 8px;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+div.dt-button-collection .dt-button {
+    background: transparent !important;
+    color: #212529 !important;
+    border: none !important;
+    width: 100%;
+    text-align: left;
+    border-radius: 8px;
+    margin: 2px 0;
+    transition: 0.2s ease;
+}
+
+div.dt-button-collection .dt-button:hover,
+div.dt-button-collection .dt-button.active {
+    background: #0d6efd !important;
+    color: #fff !important;
+}
+
+div.dt-button-collection .dt-button:hover *,
+div.dt-button-collection .dt-button.active * {
+    color: #fff !important;
+}

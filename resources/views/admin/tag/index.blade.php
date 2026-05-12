@@ -1,54 +1,50 @@
 @extends('admin.layout.app')
 @push('vite')
-    @vite(['resources/js/experience.js'])
+    @vite('resources/js/tag.js')
 @endpush
-<!-- Di dalam Blade -->
-
 @section('content')
     <div class="container-fluid">
 
         <!-- Page Header -->
         <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
             <div class="">
-                <h1 class="page-title fw-semibold fs-20 mb-0">Experience</h1>
+                <h1 class="page-title fw-semibold fs-20 mb-0">Tags</h1>
                 <div class="">
                     <nav>
                         <ol class="breadcrumb mb-0">
                             <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Experience</li>
+                            <li class="breadcrumb-item active" aria-current="page">Tags</li>
                         </ol>
                     </nav>
                 </div>
             </div>
             <div class="ms-auto pageheader-btn">
                 <button type="button" class="btn btn-primary btn-wave waves-effect waves-light me-2" data-bs-toggle="modal"
-                    data-bs-target="#add-experience">
+                    data-bs-target="#add-tag">
 
                     <i class="fe fe-plus mx-1 align-middle"></i>
                     Tambah Data
                 </button>
 
             </div>
-            @include('admin.experience.add-modal')
-            @include('admin.experience.edit-modal')
+            @include('admin.tag.add-modal')
+            @include('admin.tag.edit-modal')
         </div>
 
         <div class="row">
             <div class="col-xl-12">
                 <div class="card custom-card">
                     <div class="card-header">
-                        <div class="card-title">Experience</div>
+                        <div class="card-title">Tags</div>
                     </div>
                     <div class="card-body">
-                        <table id="experience" class="table table-bordered text-nowrap" style="width:100%">
+                        <table id="tags" class="table table-bordered text-nowrap" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Start date</th>
-                                    <th>End date</th>
-                                    <th>Status</th>
+                                    <th>NO</th>
+                                    <th>Nama</th>
                                     <th>Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>

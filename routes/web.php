@@ -59,6 +59,9 @@ Route::prefix('admin')->group(function () {
         Route::group(['prefix' => 'tag', 'as' => 'admin.tag.'], function () {
             Route::get('/', [TagController::class, 'index'])
                 ->name('index');
+            // DataTables route
+            Route::get('/data', [TagController::class, 'data'])
+                ->name('data');
         });
 
         Route::post('/logout', [AuthController::class, 'logout'])

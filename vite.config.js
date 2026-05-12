@@ -12,6 +12,7 @@ export default defineConfig({
                 "resources/js/admin.js",
                 "resources/js/appsetting.js",
                 "resources/js/experience.js",
+                "resources/js/tag.js",
             ],
             refresh: true,
         }),
