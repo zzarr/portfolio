@@ -20,7 +20,7 @@
             </div>
             <div class="ms-auto pageheader-btn">
                 <button type="button" class="btn btn-primary btn-wave waves-effect waves-light me-2" data-bs-toggle="modal"
-                    data-bs-target="#add-tag">
+                    data-bs-target="#addTagModal">
 
                     <i class="fe fe-plus mx-1 align-middle"></i>
                     Tambah Data

@@ -41,4 +41,45 @@ class TagController extends Controller
             ->rawColumns(['action'])
             ->make(true);
     }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        Tag::create([
+            'name' => $request->name,
+        ]);
+
+        return response()->json(['message' => 'Tag berhasil ditambahkan']);
+    }
+
+    public function show($id)
+    {
+        $tag = Tag::findOrFail($id);
+        return response()->json($tag);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+
+        $tag = Tag::findOrFail($id);
+        $tag->update([
+            'name' => $request->name,
+        ]);
+
+        return response()->json(['message' => 'Tag berhasil diperbarui']);
+    }
+
+    public function destroy($id)
+    {
+        $tag = Tag::findOrFail($id);
+        $tag->delete();
+
+        return response()->json(['message' => 'Tag berhasil dihapus']);
+    }
 }

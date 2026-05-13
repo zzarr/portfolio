@@ -62,6 +62,15 @@ Route::prefix('admin')->group(function () {
             // DataTables route
             Route::get('/data', [TagController::class, 'data'])
                 ->name('data');
+            // CRUD routes
+            Route::post('/store', [TagController::class, 'store'])
+                ->name('store');
+            Route::get('/show/{id}', [TagController::class, 'show'])
+                ->name('show');
+            Route::put('/update/{id}', [TagController::class, 'update'])
+                ->name('update');
+            Route::delete('/destroy/{id}', [TagController::class, 'destroy'])
+                ->name('destroy');
         });
 
         Route::post('/logout', [AuthController::class, 'logout'])
