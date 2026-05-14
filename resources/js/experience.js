@@ -1,6 +1,5 @@
 import { Notify } from "notiflix";
 
-//datatables
 $(document).ready(function () {
     // =========================
     // DATATABLES

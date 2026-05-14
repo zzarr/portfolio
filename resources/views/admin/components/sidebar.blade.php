@@ -76,8 +76,9 @@
                                     <!-- End::slide -->
 
                                     <!-- Start::slide -->
-                                    <li class="slide ">
-                                        <a href="index.html" class="side-menu__item ">
+                                    <li class="slide {{ request()->is('admin/projects*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.projects.index') }}"
+                                            class="side-menu__item {{ request()->is('admin/projects*') ? 'active' : '' }}">
                                             <i class="fe fe-briefcase side-menu__icon"></i>
                                             <span class="side-menu__label">Projects</span>
                                         </a>

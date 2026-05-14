@@ -13,6 +13,7 @@ export default defineConfig({
                 "resources/js/appsetting.js",
                 "resources/js/experience.js",
                 "resources/js/tag.js",
+                "resources/js/project.js",
             ],
             refresh: true,
         }),
