@@ -1,4 +1,8 @@
 import "./bootstrap";
+import Alpine from "alpinejs";
+window.Alpine = Alpine;
+
+Alpine.start();
 
 //jQuery
 import $ from "jquery";
@@ -133,3 +137,4 @@ pdfMake.vfs = pdfFonts.vfs;
 | CUSTOM JS
 |--------------------------------------------------------------------------
 */
+import "./tiptap";

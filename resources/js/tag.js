@@ -7,6 +7,14 @@ $(document).ready(function () {
     const table = $("#tags").DataTable({
         processing: true,
         serverSide: true,
+        responsive: true,
+
+        scrollY: "400px",
+        scrollCollapse: true,
+
+        fixedHeader: true,
+
+        paging: true,
 
         ajax: {
             url: "/admin/tag/data",
