@@ -1,9 +1,11 @@
+import "./tiptap";
+
 $(document).ready(function () {
     // =========================
     // DATATABLES
     // =========================
 
-    const table = $("#projectsTable").DataTable({
+    const table = $("#projects").DataTable({
         processing: true,
         serverSide: true,
         responsive: true,

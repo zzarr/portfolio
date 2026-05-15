@@ -10,8 +10,13 @@ window.createEditor = function (content = "") {
         content,
 
         init(element) {
+            // Hindari double init
+            if (this.editor) {
+                this.editor.destroy();
+            }
+
             this.editor = new Editor({
-                element,
+                element: element,
 
                 extensions: [
                     StarterKit,
@@ -22,6 +27,8 @@ window.createEditor = function (content = "") {
 
                     Link.configure({
                         openOnClick: false,
+                        autolink: true,
+                        defaultProtocol: "https",
                     }),
 
                     Image,
@@ -39,60 +46,54 @@ window.createEditor = function (content = "") {
                     this.content = editor.getHTML();
                 },
             });
-
-            this.$watch("content", (value) => {
-                if (this.editor.getHTML() !== value) {
-                    this.editor.commands.setContent(value, false);
-                }
-            });
         },
 
         toggleBold() {
-            this.editor.chain().focus().toggleBold().run();
+            this.editor?.chain().focus().toggleBold().run();
         },
 
         toggleItalic() {
-            this.editor.chain().focus().toggleItalic().run();
+            this.editor?.chain().focus().toggleItalic().run();
         },
 
         toggleStrike() {
-            this.editor.chain().focus().toggleStrike().run();
+            this.editor?.chain().focus().toggleStrike().run();
         },
 
         toggleBulletList() {
-            this.editor.chain().focus().toggleBulletList().run();
+            this.editor?.chain().focus().toggleBulletList().run();
         },
 
         toggleOrderedList() {
-            this.editor.chain().focus().toggleOrderedList().run();
+            this.editor?.chain().focus().toggleOrderedList().run();
         },
 
         toggleBlockquote() {
-            this.editor.chain().focus().toggleBlockquote().run();
+            this.editor?.chain().focus().toggleBlockquote().run();
         },
 
         toggleCodeBlock() {
-            this.editor.chain().focus().toggleCodeBlock().run();
+            this.editor?.chain().focus().toggleCodeBlock().run();
         },
 
         setParagraph() {
-            this.editor.chain().focus().setParagraph().run();
+            this.editor?.chain().focus().setParagraph().run();
         },
 
         toggleHeading(level) {
-            this.editor.chain().focus().toggleHeading({ level }).run();
+            this.editor?.chain().focus().toggleHeading({ level }).run();
         },
 
         undo() {
-            this.editor.chain().focus().undo().run();
+            this.editor?.chain().focus().undo().run();
         },
 
         redo() {
-            this.editor.chain().focus().redo().run();
+            this.editor?.chain().focus().redo().run();
         },
 
         setLink() {
-            const previousUrl = this.editor.getAttributes("link").href;
+            const previousUrl = this.editor?.getAttributes("link").href || "";
 
             const url = window.prompt("Masukkan URL", previousUrl);
 
@@ -101,16 +102,24 @@ window.createEditor = function (content = "") {
             }
 
             if (url === "") {
-                this.editor.chain().focus().unsetLink().run();
+                this.editor?.chain().focus().unsetLink().run();
+
                 return;
             }
 
-            this.editor.chain().focus().setLink({ href: url }).run();
+            this.editor
+                ?.chain()
+                .focus()
+                .setLink({
+                    href: url,
+                })
+                .run();
         },
 
         destroy() {
             if (this.editor) {
                 this.editor.destroy();
+                this.editor = null;
             }
         },
     };

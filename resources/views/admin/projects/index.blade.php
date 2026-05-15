@@ -1,38 +1,61 @@
 @extends('admin.layout.app')
+@push('vite')
+    @vite('resources/js/project.js')
+@endpush
 @section('content')
     <div class="container-fluid">
 
-        <!-- ROW-1 OPEN -->
+        <!-- Page Header -->
+        <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
+            <div class="">
+                <h1 class="page-title fw-semibold fs-20 mb-0">Projects</h1>
+                <div class="">
+                    <nav>
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Projects</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <div class="ms-auto pageheader-btn">
+                <button type="button" class="btn btn-primary btn-wave waves-effect waves-light me-2" data-bs-toggle="modal"
+                    data-bs-target="#add-project">
+
+                    <i class="fe fe-plus mx-1 align-middle"></i>
+                    Tambah Data
+                </button>
+
+            </div>
+            @include('admin.projects.add-modal')
+            @include('admin.projects.edit-modal')
+        </div>
+
         <div class="row">
-            <div class="col-12">
+            <div class="col-xl-12">
                 <div class="card custom-card">
-                    <div class="card-header ">
-                        <h3 class="card-title ">Projects</h3>
-                        <div class="card-options ms-auto">
-                            <button id="add__new__list" type="button" class="btn btn-md btn-primary " data-bs-toggle=""
-                                data-target=".bd-example-modal-lg"><i class="fa fa-plus"></i> Add a new Project</button>
-                        </div>
+                    <div class="card-header">
+                        <div class="card-title">Projects</div>
                     </div>
-                    <div class="table-responsive">
-                        <table class="table text-nowrap table-striped" id="projectsTable">
+                    <div class="card-body">
+                        <table id="projects" class="table table-bordered text-nowrap" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th scope="col">No</th>
-                                    <th scope="col">Title</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Github URL</th>
-                                    <th scope="col">Is Featured</th>
-                                    <th scope="col">Action</th>
+                                    <th>NO</th>
+                                    <th>Title</th>
+                                    <th>Slug</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
-        <!-- ROW-1 CLOSED -->
     </div>
 @endsection
