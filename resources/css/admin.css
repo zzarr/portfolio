@@ -27,3 +27,71 @@ div.dt-button-collection .dt-button:hover *,
 div.dt-button-collection .dt-button.active * {
     color: #fff !important;
 }
+
+.note-modal-backdrop {
+    display: none !important;
+}
+
+.ProseMirror {
+    outline: none;
+    min-height: 300px;
+}
+
+.ProseMirror p {
+    margin-bottom: 1rem;
+}
+
+.ProseMirror h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.ProseMirror ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+}
+
+/* Styling dasar untuk area editor Tiptap */
+.tiptap {
+    background: white;
+    min-height: 300px;
+}
+
+.tiptap:focus {
+    outline: none;
+}
+
+.tiptap p {
+    margin-bottom: 0.75rem;
+}
+
+.tiptap ul,
+.tiptap ol {
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.tiptap h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.tiptap h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+}
+
+.tiptap blockquote {
+    border-left: 4px solid #ccc;
+    padding-left: 1rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.tiptap img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 1rem 0;
+}

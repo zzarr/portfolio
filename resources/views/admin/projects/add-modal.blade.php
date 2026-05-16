@@ -20,103 +20,111 @@
 
                         {{-- Content --}}
                         <div class="col-12">
-                            <div x-data="createEditor(@js(old('content', $project->content ?? '')))" class="space-y-3">
+                            <label for="content" class="form-label">Content</label>
+                            <textarea class="form-control" id="content" name="content" rows="6"></textarea>
+                        </div>
 
-                                {{-- Hidden Input --}}
-                                <input type="hidden" name="content" x-model="content">
+                        <div class="col-12">
 
-                                {{-- Toolbar --}}
-                                <div
-                                    class="flex flex-wrap items-center gap-2 border border-gray-700 bg-gray-950 rounded-xl p-3">
+                            <input type="hidden" name="content" id="editor-content" value="{{ old('content') }}">
 
-                                    {{-- Heading --}}
-                                    <button type="button" @click="toggleHeading(1)"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm">
-                                        H1
-                                    </button>
+                            <div class="form-group mb-3">
 
-                                    <button type="button" @click="toggleHeading(2)"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm">
-                                        H2
-                                    </button>
+                                <label class="form-label fw-bold">
+                                    Konten
+                                </label>
 
-                                    <button type="button" @click="setParagraph()"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm">
-                                        P
-                                    </button>
+                                {{-- TOOLBAR --}}
+                                <div class="btn-toolbar p-2 border border-bottom-0 rounded-top-2 bg-light gap-2"
+                                    role="toolbar">
 
-                                    {{-- Text Style --}}
-                                    <button type="button" @click="toggleBold()"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm font-bold">
-                                        B
-                                    </button>
+                                    {{-- TEXT --}}
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-bold">
+                                            <b>B</b>
+                                        </button>
 
-                                    <button type="button" @click="toggleItalic()"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm italic">
-                                        I
-                                    </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-italic">
+                                            <i>I</i>
+                                        </button>
 
-                                    <button type="button" @click="toggleStrike()"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm line-through">
-                                        S
-                                    </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                            id="btn-underline">
+                                            <u>U</u>
+                                        </button>
 
-                                    {{-- Lists --}}
-                                    <button type="button" @click="toggleBulletList()"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm">
-                                        • List
-                                    </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-strike">
+                                            <s>S</s>
+                                        </button>
+                                    </div>
 
-                                    <button type="button" @click="toggleOrderedList()"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm">
-                                        1. List
-                                    </button>
+                                    {{-- HEADING --}}
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                            id="btn-heading-1">
+                                            H1
+                                        </button>
 
-                                    {{-- Quote --}}
-                                    <button type="button" @click="toggleBlockquote()"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm">
-                                        Quote
-                                    </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                            id="btn-heading-2">
+                                            H2
+                                        </button>
+                                    </div>
 
-                                    {{-- Code --}}
-                                    <button type="button" @click="toggleCodeBlock()"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm">
-                                        Code
-                                    </button>
+                                    {{-- LIST --}}
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-bullet">
+                                            • List
+                                        </button>
 
-                                    {{-- Link --}}
-                                    <button type="button" @click="setLink()"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm">
-                                        Link
-                                    </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                            id="btn-ordered">
+                                            1. List
+                                        </button>
+                                    </div>
 
-                                    {{-- Undo / Redo --}}
-                                    <button type="button" @click="undo()"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm">
-                                        Undo
-                                    </button>
+                                    {{-- BLOCK --}}
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-quote">
+                                            Quote
+                                        </button>
 
-                                    <button type="button" @click="redo()"
-                                        class="px-3 py-1.5 rounded-lg bg-gray-800 hover:bg-gray-700 text-sm">
-                                        Redo
-                                    </button>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-hr">
+                                            HR
+                                        </button>
+                                    </div>
+
+                                    {{-- HISTORY --}}
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-undo">
+                                            Undo
+                                        </button>
+
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-redo">
+                                            Redo
+                                        </button>
+                                    </div>
+
+                                    {{-- LINK --}}
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-link">
+                                            Link
+                                        </button>
+                                    </div>
+
+                                    {{-- IMAGE --}}
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-image">
+                                            Image
+                                        </button>
+                                    </div>
+
                                 </div>
 
-                                {{-- Editor --}}
-                                <div x-ref="editor" x-init="init($refs.editor)"
-                                    class="border border-gray-700 rounded-2xl bg-gray-950 p-5 text-white min-h-[400px]">
-                                </div>
-
-                                {{-- Validation Error --}}
-                                @error('content')
-                                    <p class="text-sm text-red-500">
-                                        {{ $message }}
-                                    </p>
-                                @enderror
+                                {{-- EDITOR --}}
+                                <div id="tiptap-editor"></div>
 
                             </div>
-
-
                         </div>
 
 

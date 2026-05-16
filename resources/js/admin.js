@@ -2,8 +2,6 @@ import "./bootstrap";
 import Alpine from "alpinejs";
 window.Alpine = Alpine;
 
-Alpine.start();
-
 //jQuery
 import $ from "jquery";
 //dropify
@@ -11,6 +9,7 @@ import "dropify/dist/js/dropify.min.js";
 import "dropify/dist/css/dropify.min.css";
 
 window.$ = $;
+$.now = Date.now;
 window.jQuery = $;
 
 import { Notify } from "notiflix/build/notiflix-notify-aio";
@@ -128,9 +127,12 @@ pdfMake.vfs = pdfFonts.vfs;
 
 /*
 |--------------------------------------------------------------------------
-| INIT
+| SUMMERNOTE
 |--------------------------------------------------------------------------
 */
+import "summernote/dist/summernote-lite.min.js";
+
+import "summernote/dist/summernote-lite.min.css";
 
 /*
 |--------------------------------------------------------------------------
@@ -138,3 +140,4 @@ pdfMake.vfs = pdfFonts.vfs;
 |--------------------------------------------------------------------------
 */
 import "./tiptap";
+Alpine.start();

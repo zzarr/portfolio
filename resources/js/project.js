@@ -1,5 +1,3 @@
-import "./tiptap";
-
 $(document).ready(function () {
     // =========================
     // DATATABLES
@@ -77,6 +75,25 @@ $(document).ready(function () {
                 orderable: false,
                 searchable: false,
             },
+        ],
+    });
+
+    // =========================
+    // SUMMERNOTE
+    // =========================
+
+    $("#content").summernote({
+        height: 300,
+        placeholder: "Tulis sesuatu...",
+        toolbar: [
+            ["style", ["style"]],
+            ["font", ["bold", "italic", "underline", "clear"]],
+            ["fontname", ["fontname"]],
+            ["color", ["color"]],
+            ["para", ["ul", "ol", "paragraph"]],
+            ["table", ["table"]],
+            ["insert", ["link", "picture"]],
+            ["view", ["codeview"]],
         ],
     });
 });
