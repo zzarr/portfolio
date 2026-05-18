@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class ProjectService
+class ProjectServices
 {
     /**
      * Store project
@@ -39,9 +39,10 @@ class ProjectService
     /**
      * Show detail project
      */
-    public function show(Project $project)
+    public function show($id)
     {
-        return $project->load('user', 'tags');
+        return Project::with('user', 'tags')
+            ->findOrFail($id);
     }
 
     /**

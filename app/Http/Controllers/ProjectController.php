@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\Project;
-use App\Services\ProjectService;
+use App\Services\ProjectServices;
 
 class ProjectController extends Controller
 {
@@ -48,7 +48,7 @@ class ProjectController extends Controller
     /**
      * Store
      */
-    public function store(Request $request, ProjectService $services)
+    public function store(Request $request, ProjectServices $services)
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
@@ -69,7 +69,7 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function show($id, ProjectService $services)
+    public function show($id, ProjectServices $services)
     {
         $project = $services->show($id);
 
@@ -82,7 +82,7 @@ class ProjectController extends Controller
     public function update(
         Request $request,
         $id,
-        ProjectService $services
+        ProjectServices $services
     ) {
 
         $validated = $request->validate([
@@ -103,7 +103,7 @@ class ProjectController extends Controller
         ]);
     }
 
-    public function destroy($id, ProjectService $services)
+    public function destroy($id, ProjectServices  $services)
     {
         $services->destroy($id);
 

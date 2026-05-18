@@ -130,8 +130,6 @@ pdfMake.vfs = pdfFonts.vfs;
 | SUMMERNOTE
 |--------------------------------------------------------------------------
 */
-import "summernote/dist/summernote.min.js";
-import "summernote/dist/summernote.min.css";
 
 import "summernote/dist/summernote-bs5.min.js";
 

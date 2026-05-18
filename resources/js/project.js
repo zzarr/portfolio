@@ -53,22 +53,15 @@ $(document).ready(function () {
                 name: "title",
             },
             {
+                data: "slug",
+                name: "slug",
+            },
+
+            {
                 data: "description",
                 name: "description",
             },
 
-            {
-                data: "github_url",
-                name: "github_url",
-                orderable: false,
-                searchable: false,
-            },
-            {
-                data: "is_featured",
-                name: "is_featured",
-                orderable: false,
-                searchable: false,
-            },
             {
                 data: "action",
                 name: "action",
@@ -107,7 +100,7 @@ $(document).ready(function () {
             $btn.prop("disabled", true).text("Saving...");
 
             $.ajax({
-                url: "/admin/project/store",
+                url: "/admin/projects/store",
                 type: "POST",
                 data: formData,
                 processData: false,
@@ -134,8 +127,8 @@ $(document).ready(function () {
                     modal.hide();
 
                     // reload datatable jika ada
-                    if ($.fn.DataTable.isDataTable("#projectTable")) {
-                        $("#projectTable").DataTable().ajax.reload(null, false);
+                    if ($.fn.DataTable.isDataTable("#projects")) {
+                        $("#projects").DataTable().ajax.reload(null, false);
                     }
                 },
 
@@ -163,6 +156,60 @@ $(document).ready(function () {
         $("#add-project").on("hidden.bs.modal", function () {
             $("body").removeClass("modal-open");
             $(".modal-backdrop").remove();
+        });
+    });
+
+    // =========================
+    // EDIT PROJECT
+    // =========================
+
+    $(document).on("click", ".edit-project", function () {
+        let id = $(this).data("id");
+
+        $.ajax({
+            url: `/admin/projects/show/${id}`,
+            type: "GET",
+
+            success: function (response) {
+                let data = response.data;
+
+                // simpan id
+                $("#edit_id").val(data.id);
+
+                // isi input
+                $("#edit_title").val(data.title);
+                $("#edit_slug").val(data.slug);
+                $("#edit_github_url").val(data.github_url);
+                $("#edit_description").val(data.description);
+                $("#edit_content").val(data.content);
+
+                // checkbox
+                $("#edit_is_featured").prop("checked", data.is_featured == 1);
+
+                // destroy dropify lama
+                let drEvent = $("#edit_thumbnail").dropify({
+                    defaultFile: data.thumbnail
+                        ? `/storage/${data.thumbnail}`
+                        : null,
+                });
+
+                drEvent = drEvent.data("dropify");
+
+                drEvent.destroy();
+
+                $("#edit_thumbnail").dropify({
+                    defaultFile: data.thumbnail
+                        ? `/storage/${data.thumbnail}`
+                        : null,
+                });
+
+                // tampilkan modal
+                $("#edit-project").modal("show");
+            },
+
+            error: function () {
+                Notify.failure("Gagal mengambil data project");
+            },
         });
     });
 });
