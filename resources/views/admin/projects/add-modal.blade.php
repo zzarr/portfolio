@@ -58,6 +58,21 @@
                             </div>
                         </div>
 
+                        <!-- Tags -->
+                        <div class="col-6">
+                            <label for="tags" class="form-label">Tags</label>
+
+                            <select class="form-select" id="tags" name="tags[]" multiple>
+
+                                @foreach ($tags as $tag)
+                                    <option value="{{ $tag->id }}">
+                                        {{ $tag->name }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+                        </div>
+
 
 
                         {{-- Content --}}

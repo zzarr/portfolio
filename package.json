@@ -47,6 +47,7 @@
         "notiflix": "^3.2.8",
         "notifyjs-browser": "^0.4.2",
         "pdfmake": "^0.3.8",
+        "select2": "^4.1.0-rc.0",
         "summernote": "^0.9.1"
     }
 }

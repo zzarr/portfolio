@@ -1,3 +1,7 @@
+import select2 from "select2";
+import "select2/dist/css/select2.min.css";
+
+select2();
 $(document).ready(function () {
     // =========================
     // DATATABLES
@@ -80,6 +84,16 @@ $(document).ready(function () {
         placeholder: "Tulis sesuatu...",
 
         focus: true,
+    });
+
+    $("#add-project").on("shown.bs.modal", function () {
+        if (!$("#tags").hasClass("select2-hidden-accessible")) {
+            $("#tags").select2({
+                dropdownParent: $("#add-project"),
+                placeholder: "Select tags",
+                width: "100%",
+            });
+        }
     });
 
     // =========================

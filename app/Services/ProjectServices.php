@@ -4,94 +4,171 @@ namespace App\Services;
 
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ProjectServices
 {
     /**
-     * Store project
+     * Create project
      */
-    public function store(array $data)
+    public function createProject(array $data): Project
+    {
+        return DB::transaction(function () use ($data) {
+
+            // create project
+            $project = $this->storeProject($data);
+
+            // store tags
+            $this->storeProjectTags(
+                $project,
+                $data['tags'] ?? []
+            );
+
+            return $project->load('user', 'tags');
+        });
+    }
+
+    /**
+     * Store main project
+     */
+    private function storeProject(array $data): Project
     {
         // upload thumbnail
+        $thumbnail = null;
+
         if (isset($data['thumbnail'])) {
-            $data['thumbnail'] = $data['thumbnail']->store(
+            $thumbnail = $data['thumbnail']->store(
                 'projects',
                 'public'
             );
         }
 
-        // slug otomatis
-        $data['slug'] = $data['slug']
-            ? Str::slug($data['slug'])
-            : Str::slug($data['title']);
+        return Project::create([
+            'user_id' => Auth::id(),
 
-        // featured
-        $data['is_featured'] = $data['is_featured'] ?? 0;
+            'title' => $data['title'],
 
-        // user login
-        $data['user_id'] = Auth::id();
+            'slug' => !empty($data['slug'])
+                ? Str::slug($data['slug'])
+                : Str::slug($data['title']),
 
-        return Project::create($data);
+            'thumbnail' => $thumbnail,
+
+            'description' => $data['description'] ?? null,
+
+            'content' => $data['content'] ?? null,
+
+            'github_url' => $data['github_url'] ?? null,
+
+            'is_featured' => $data['is_featured'] ?? false,
+        ]);
     }
 
     /**
-     * Show detail project
+     * Store project tags
      */
-    public function show($id)
-    {
-        return Project::with('user', 'tags')
-            ->findOrFail($id);
+    private function storeProjectTags(
+        Project $project,
+        array $tags
+    ): void {
+
+        if (!empty($tags)) {
+            $project->tags()->sync($tags);
+        }
+    }
+
+    /**
+     * Get project with relations
+     */
+    public function getProjectWithRelations(
+        int $id
+    ): Project {
+
+        return Project::with([
+            'user',
+            'tags'
+        ])->findOrFail($id);
     }
 
     /**
      * Update project
      */
-    public function update(Project $project, array $data)
-    {
-        // upload thumbnail baru
-        if (isset($data['thumbnail'])) {
+    public function updateProject(
+        int $id,
+        array $data
+    ): Project {
 
-            // hapus thumbnail lama
-            if ($project->thumbnail) {
-                Storage::disk('public')
-                    ->delete($project->thumbnail);
+        return DB::transaction(function () use ($id, $data) {
+
+            $project = Project::findOrFail($id);
+
+            // upload thumbnail baru
+            if (isset($data['thumbnail'])) {
+
+                // hapus thumbnail lama
+                if ($project->thumbnail) {
+                    Storage::disk('public')
+                        ->delete($project->thumbnail);
+                }
+
+                $thumbnail = $data['thumbnail']->store(
+                    'projects',
+                    'public'
+                );
+            } else {
+                $thumbnail = $project->thumbnail;
             }
 
-            $data['thumbnail'] = $data['thumbnail']->store(
-                'projects',
-                'public'
+            // update project
+            $project->update([
+                'title' => $data['title'],
+
+                'slug' => !empty($data['slug'])
+                    ? Str::slug($data['slug'])
+                    : Str::slug($data['title']),
+
+                'thumbnail' => $thumbnail,
+
+                'description' => $data['description'] ?? null,
+
+                'content' => $data['content'] ?? null,
+
+                'github_url' => $data['github_url'] ?? null,
+
+                'is_featured' => $data['is_featured'] ?? false,
+            ]);
+
+            // update tags
+            $project->tags()->sync(
+                $data['tags'] ?? []
             );
-        }
 
-        // slug otomatis
-        $data['slug'] = $data['slug']
-            ? Str::slug($data['slug'])
-            : Str::slug($data['title']);
-
-        // featured
-        $data['is_featured'] = $data['is_featured'] ?? 0;
-
-        $project->update($data);
-
-        return $project;
+            return $project->load('user', 'tags');
+        });
     }
 
     /**
      * Delete project
      */
-    public function destroy(Project $project)
+    public function deleteProject(int $id): void
     {
-        // hapus thumbnail
-        if ($project->thumbnail) {
-            Storage::disk('public')
-                ->delete($project->thumbnail);
-        }
+        DB::transaction(function () use ($id) {
 
-        // hapus relasi tags
-        $project->tags()->detach();
+            $project = Project::findOrFail($id);
 
-        return $project->delete();
+            // delete thumbnail
+            if ($project->thumbnail) {
+                Storage::disk('public')
+                    ->delete($project->thumbnail);
+            }
+
+            // delete tags relation
+            $project->tags()->detach();
+
+            // delete project
+            $project->delete();
+        });
     }
 }
