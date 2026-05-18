@@ -85,15 +85,84 @@ $(document).ready(function () {
     $("#content").summernote({
         height: 300,
         placeholder: "Tulis sesuatu...",
-        toolbar: [
-            ["style", ["style"]],
-            ["font", ["bold", "italic", "underline", "clear"]],
-            ["fontname", ["fontname"]],
-            ["color", ["color"]],
-            ["para", ["ul", "ol", "paragraph"]],
-            ["table", ["table"]],
-            ["insert", ["link", "picture"]],
-            ["view", ["codeview"]],
-        ],
+
+        focus: true,
+    });
+
+    // =========================
+    // ADD PROJECT
+    // =========================
+    $(document).ready(function () {
+        $("#addProjectForm").on("submit", function (e) {
+            e.preventDefault();
+
+            const form = this;
+            const formData = new FormData(form);
+
+            // checkbox fix
+            formData.set("is_futured", $("#is_futured").is(":checked") ? 1 : 0);
+
+            // button loading
+            const $btn = $('button[form="addProjectForm"]');
+            $btn.prop("disabled", true).text("Saving...");
+
+            $.ajax({
+                url: "/admin/project/store",
+                type: "POST",
+                data: formData,
+                processData: false,
+                contentType: false,
+
+                success: function (response) {
+                    Notify.success(
+                        response.message || "Project berhasil ditambahkan",
+                    );
+
+                    // reset form
+                    form.reset();
+
+                    // reset dropify
+                    if ($("#thumbnail").data("dropify")) {
+                        $("#thumbnail").data("dropify").resetPreview();
+                        $("#thumbnail").data("dropify").clearElement();
+                    }
+
+                    // tutup modal
+                    const modalEl = document.getElementById("add-project");
+                    const modal = bootstrap.Modal.getInstance(modalEl);
+
+                    modal.hide();
+
+                    // reload datatable jika ada
+                    if ($.fn.DataTable.isDataTable("#projectTable")) {
+                        $("#projectTable").DataTable().ajax.reload(null, false);
+                    }
+                },
+
+                error: function (xhr) {
+                    if (xhr.status === 422) {
+                        let errors = xhr.responseJSON.errors;
+
+                        $.each(errors, function (key, value) {
+                            Notify.failure(value[0]);
+                        });
+                    } else {
+                        Notify.failure(
+                            xhr.responseJSON?.message || "Terjadi kesalahan",
+                        );
+                    }
+                },
+
+                complete: function () {
+                    $btn.prop("disabled", false).text("Save changes");
+                },
+            });
+        });
+
+        // bersihkan backdrop bug modal
+        $("#add-project").on("hidden.bs.modal", function () {
+            $("body").removeClass("modal-open");
+            $(".modal-backdrop").remove();
+        });
     });
 });

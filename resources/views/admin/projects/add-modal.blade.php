@@ -15,6 +15,48 @@
 
                     @csrf
                     <div class="row gy-3">
+                        <!-- Nama Project -->
+                        <div class="col-6">
+                            <label for="title" class="form-label">Nama Project</label>
+                            <input type="text" class="form-control" id="title" name="title"
+                                placeholder="Enter project name">
+                        </div>
+                        <!-- slug (optional) -->
+                        <div class="col-6">
+                            <label for="slug" class="form-label">Slug (optional)</label>
+                            <input type="text" class="form-control" id="slug" name="slug"
+                                placeholder="Enter project slug">
+
+                        </div>
+
+                        <!-- github link -->
+                        <div class="col-6">
+                            <label for="github_url" class="form-label">GitHub Link</label>
+                            <input type="text" class="form-control" id="github_url" name="github_url"
+                                placeholder="Enter GitHub repository URL">
+                        </div>
+                        <!--- thumbnail -->
+                        <div class="col-6">
+                            <label for="thumbnail" class="form-label">Thumbnail</label>
+                            <input type="file" id="thumbnail" class="dropify" name="thumbnail" />
+                        </div>
+
+                        <div class="col-6">
+                            <label for="description" class="form-label">Description</label>
+                            <input type="text" class="form-control" id="description" name="description"
+                                placeholder="Enter project description">
+                        </div>
+
+                        <div class="col-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="1" id="is_futured"
+                                    name="is_futured">
+
+                                <label class="form-check-label" for="is_futured">
+                                    masih berlangsung?
+                                </label>
+                            </div>
+                        </div>
 
 
 
@@ -23,111 +65,6 @@
                             <label for="content" class="form-label">Content</label>
                             <textarea class="form-control" id="content" name="content" rows="6"></textarea>
                         </div>
-
-                        <div class="col-12">
-
-                            <input type="hidden" name="content" id="editor-content" value="{{ old('content') }}">
-
-                            <div class="form-group mb-3">
-
-                                <label class="form-label fw-bold">
-                                    Konten
-                                </label>
-
-                                {{-- TOOLBAR --}}
-                                <div class="btn-toolbar p-2 border border-bottom-0 rounded-top-2 bg-light gap-2"
-                                    role="toolbar">
-
-                                    {{-- TEXT --}}
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-bold">
-                                            <b>B</b>
-                                        </button>
-
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-italic">
-                                            <i>I</i>
-                                        </button>
-
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"
-                                            id="btn-underline">
-                                            <u>U</u>
-                                        </button>
-
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-strike">
-                                            <s>S</s>
-                                        </button>
-                                    </div>
-
-                                    {{-- HEADING --}}
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"
-                                            id="btn-heading-1">
-                                            H1
-                                        </button>
-
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"
-                                            id="btn-heading-2">
-                                            H2
-                                        </button>
-                                    </div>
-
-                                    {{-- LIST --}}
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-bullet">
-                                            • List
-                                        </button>
-
-                                        <button type="button" class="btn btn-sm btn-outline-secondary"
-                                            id="btn-ordered">
-                                            1. List
-                                        </button>
-                                    </div>
-
-                                    {{-- BLOCK --}}
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-quote">
-                                            Quote
-                                        </button>
-
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-hr">
-                                            HR
-                                        </button>
-                                    </div>
-
-                                    {{-- HISTORY --}}
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-undo">
-                                            Undo
-                                        </button>
-
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-redo">
-                                            Redo
-                                        </button>
-                                    </div>
-
-                                    {{-- LINK --}}
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-link">
-                                            Link
-                                        </button>
-                                    </div>
-
-                                    {{-- IMAGE --}}
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" id="btn-image">
-                                            Image
-                                        </button>
-                                    </div>
-
-                                </div>
-
-                                {{-- EDITOR --}}
-                                <div id="tiptap-editor"></div>
-
-                            </div>
-                        </div>
-
-
 
                     </div>
 
