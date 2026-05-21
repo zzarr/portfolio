@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/icons.css') }}">
 </head>
 
-<body class="bg-gray-950 text-white">
+<body class="bg-gray-950 text-white font-sans antialiased">
 
 
 

@@ -9,7 +9,12 @@ use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ProjectController;
 
-Route::get('/', [LandingPageController::class, 'index']);
+Route::group(['prefix' => 'portfolio'], function () {
+    Route::get('/', [LandingPageController::class, 'index'])->name('portfolio');
+});
+Route::get('/', function () {
+    return redirect()->route('portfolio');
+});
 
 
 
