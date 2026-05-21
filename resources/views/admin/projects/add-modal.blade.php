@@ -49,10 +49,10 @@
 
                         <div class="col-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="1" id="is_futured"
-                                    name="is_futured">
+                                <input class="form-check-input" type="checkbox" value="1" id="is_featured"
+                                    name="is_featured">
 
-                                <label class="form-check-label" for="is_futured">
+                                <label class="form-check-label" for="is_featured">
                                     masih berlangsung?
                                 </label>
                             </div>

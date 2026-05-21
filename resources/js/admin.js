@@ -140,6 +140,6 @@ import "summernote/dist/summernote-bs5.min.css";
 | CUSTOM JS
 |--------------------------------------------------------------------------
 */
-import "./tiptap";
+
 Alpine.start();
 $(".dropify").dropify();

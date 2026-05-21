@@ -19,7 +19,7 @@
 
                     @csrf
 
-                    <input type="hidden" id="edit_id">
+                    <input type="hidden" id="edit_id" name="id">
 
                     <div class="row gy-3">
 
@@ -56,6 +56,25 @@
                             <label class="form-label">Description</label>
 
                             <input type="text" class="form-control" id="edit_description" name="description">
+                        </div>
+
+                        <!-- tags -->
+                        <div class="col-6">
+
+                            <label class="form-label">
+                                Tags
+                            </label>
+
+                            <select class="form-select" id="edit_tags" name="tags[]" multiple>
+
+                                @foreach ($tags as $tag)
+                                    <option value="{{ $tag->id }}">
+                                        {{ $tag->name }}
+                                    </option>
+                                @endforeach
+
+                            </select>
+
                         </div>
 
                         <!-- featured -->
