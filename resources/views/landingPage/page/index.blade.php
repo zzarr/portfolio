@@ -45,6 +45,7 @@
         @include('landingPage.components.project')
 
         <!-- 🛠 SKILLS -->
+        @include('landingPage.components.skills')
 
 
         <!-- 📬 CONTACT -->
