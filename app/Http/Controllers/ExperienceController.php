@@ -17,7 +17,7 @@ class ExperienceController extends Controller
 
     public function data()
     {
-        $experience = Experience::latest();
+        $experience = Experience::where('user_id', auth()->id())->latest();
 
         return DataTables::of($experience)
 
@@ -67,6 +67,10 @@ class ExperienceController extends Controller
             'details.*'    => 'sometimes|string|max:1000',
         ]);
 
+        if ($data['is_current'] ?? false) {
+            $data['end_date'] = null;
+        }
+
         $services->createExperience($data);
 
         return response()->json([
@@ -98,6 +102,10 @@ class ExperienceController extends Controller
             'details'      => 'sometimes|array',
             'details.*'    => 'sometimes|string|max:1000',
         ]);
+
+        if ($data['is_current'] ?? false) {
+            $data['end_date'] = null;
+        }
 
         $services->updateExperience($id, $data);
 

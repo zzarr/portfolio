@@ -67,7 +67,9 @@ class ExperienceServices
 
     public function getExperienceWithDetails(int $id): Experience
     {
-        return Experience::with('details')->findOrFail($id);
+        return Experience::where('user_id', Auth::id())
+            ->with('details')
+            ->findOrFail($id);
     }
 
     /**
@@ -78,7 +80,8 @@ class ExperienceServices
         return DB::transaction(function () use ($id, $data) {
 
             // update experience
-            $experience = Experience::findOrFail($id);
+            $experience = Experience::where('user_id', Auth::id())
+                ->findOrFail($id);
             $experience->update([
                 'company_name' => $data['company_name'],
                 'position'     => $data['position'],
@@ -88,7 +91,7 @@ class ExperienceServices
             ]);
 
             // delete old details
-            ExperienceDetail::where('experience_id', $id)->delete();
+            $experience->details()->delete();
 
             // create new details
             $this->storeExperienceDetails(
@@ -108,11 +111,9 @@ class ExperienceServices
     {
         DB::transaction(function () use ($id) {
 
-            // delete details
-            ExperienceDetail::where('experience_id', $id)->delete();
-
-            // delete experience
-            Experience::where('id', $id)->delete();
+            Experience::where('user_id', Auth::id())
+                ->findOrFail($id)
+                ->delete();
         });
     }
 }

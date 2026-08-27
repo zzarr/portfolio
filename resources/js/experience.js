@@ -8,7 +8,13 @@ $(document).ready(function () {
     const table = $("#experience").DataTable({
         processing: true,
         serverSide: true,
-        responsive: true,
+
+        // 1. Matikan responsive agar kolom tidak di-collapse (disembunyikan)
+        responsive: false,
+
+        // 2. Aktifkan scroll horizontal
+        scrollX: true,
+
         pageLength: 10,
         lengthChange: true,
         autoWidth: false,
@@ -220,6 +226,7 @@ $(document).ready(function () {
                 $("#edit_end_date").val(data.end_date);
 
                 $("#edit_is_current").prop("checked", data.is_current == 1);
+                $("#edit_end_date").prop("disabled", data.is_current == 1);
 
                 // =========================
                 // RESET DETAIL
@@ -231,27 +238,25 @@ $(document).ready(function () {
                 // =========================
                 if (data.details.length > 0) {
                     $.each(data.details, function (index, item) {
-                        let html = `
-                        <div class="input-group mb-2 experience-detail-item">
-
-                            <input type="text"
-                                name="details[]"
-                                class="form-control"
-                                value="${item.description}"
-                                placeholder="Contoh: Membuat dan maintenance website"
-                                required>
-
-                            <button type="button"
-                                class="btn btn-danger remove-detail">
-
-                                <i class="ri-delete-bin-line"></i>
-
-                            </button>
-
-                        </div>
-                    `;
-
-                        $("#edit-experience-detail-wrapper").append(html);
+                        const detail = $("<div>", {
+                            class: "input-group mb-2 experience-detail-item",
+                        });
+                        $("<input>", {
+                            type: "text",
+                            name: "details[]",
+                            class: "form-control",
+                            placeholder:
+                                "Contoh: Membuat dan maintenance website",
+                            required: true,
+                        })
+                            .val(item.description)
+                            .appendTo(detail);
+                        $("<button>", {
+                            type: "button",
+                            class: "btn btn-danger remove-detail",
+                            html: '<i class="ri-delete-bin-line"></i>',
+                        }).appendTo(detail);
+                        detail.appendTo("#edit-experience-detail-wrapper");
                     });
                 } else {
                     // kalau detail kosong
@@ -298,6 +303,49 @@ $(document).ready(function () {
     // ========================
     // UPDATE DETAIL
     // ========================
+    $("#edit_is_current").on("change", function () {
+        if ($(this).is(":checked")) {
+            $("#edit_end_date").val("").prop("disabled", true);
+        } else {
+            $("#edit_end_date").prop("disabled", false);
+        }
+    });
+
+    $("#editExperienceForm").on("submit", function (e) {
+        e.preventDefault();
+
+        const form = $(this);
+        const button = form.find('button[type="submit"]');
+        const id = $("#edit_id").val();
+        const modalElement = document.getElementById("edit-experience-modal");
+        const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+
+        $.ajax({
+            url: `/admin/experience/update/${id}`,
+            type: "PUT",
+            data: form.serialize(),
+            beforeSend: function () {
+                button.prop("disabled", true).html("Saving...");
+            },
+            success: function (response) {
+                Notify.success(response.message);
+                modalInstance.hide();
+                table.ajax.reload(null, false);
+            },
+            error: function (xhr) {
+                if (xhr.status === 422 && xhr.responseJSON.errors) {
+                    $.each(xhr.responseJSON.errors, function (key, value) {
+                        Notify.error(value[0]);
+                    });
+                } else {
+                    Notify.error("Terjadi kesalahan");
+                }
+            },
+            complete: function () {
+                button.prop("disabled", false).html("Save changes");
+            },
+        });
+    });
 
     // =========================
     // DELETE EXPERIENCE
