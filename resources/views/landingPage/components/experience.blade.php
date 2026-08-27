@@ -49,7 +49,7 @@
                         {{ $experience->company_name }}
                     </h2>
 
-                    <h2 class="text-sm md:text-xl font-medium text-gray-300 md:text-right">
+                    <h2 class="text-sm md:text-sm font-medium text-gray-300 md:text-right">
                         {{ $formattedDate }}
                         ({{ trim($duration) }})
                     </h2>

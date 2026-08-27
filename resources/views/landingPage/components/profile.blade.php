@@ -1,13 +1,15 @@
 <div class="-mx-4 md:mx-0">
     <div class="h-36 md:h-56 bg-gray-800 overflow-hidden lg:rounded-t-3xl">
-        <img src="{{ asset('assets/cover.jpg') }}" alt="Cover Portfolio" class="w-full h-full object-cover ">
+        <!-- Panggil file .webp, tambahkan fetchpriority dan loading -->
+        <img src="{{ asset('assets/cover.webp') }}" alt="Cover Portfolio" class="w-full h-full object-cover"
+            fetchpriority="high" loading="eager">
     </div>
 </div>
 <div class="px-4">
     <!-- FOTO -->
     <div class="-mt-12 relative z-10">
         <img src="{{ Storage::url($profile->photo) }}" alt="Profile"
-            class="w-30 h-30 rounded-full border-4 border-gray-950 object-cover 
+            class="w-[81.25px] h-[81.25px] md:w-30 md:h-30 rounded-full border-4 border-gray-950 object-cover
                transition-all duration-300 ease-out
                md:hover:scale-105 md:hover:shadow-xl
                active:scale-95">

@@ -7,6 +7,14 @@ window.jQuery = $;
 
 window.Alpine = Alpine;
 
+import "datatables.net-bs5";
+import "datatables.net-responsive-bs5";
+import "datatables.net-fixedheader-bs5";
+
+import "datatables.net-bs5/css/dataTables.bootstrap5.min.css";
+import "datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css";
+import "datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css";
+
 Alpine.data("navbarScroll", () => ({
     showNavbar: true,
     lastScroll: 0,

@@ -95,14 +95,15 @@
                                     </li>
                                     <!-- End::slide for tags -->
 
-
-
-
-
-
-
-
-
+                                    <!-- Start::slide for skills -->
+                                    <li class="slide {{ request()->is('admin/skills*') ? 'active' : '' }}">
+                                        <a href="{{ route('admin.skills.index') }}"
+                                            class="side-menu__item {{ request()->is('admin/skills*') ? 'active' : '' }}">
+                                            <i class="ri-code-s-slash-line side-menu__icon"></i>
+                                            <span class="side-menu__label">Skills</span>
+                                        </a>
+                                    </li>
+                                    <!-- End::slide for skills -->
                                     <!-- Start::slide -->
                                     <li class="slide has-sub">
                                         <a href="javascript:void(0);" class="side-menu__item">

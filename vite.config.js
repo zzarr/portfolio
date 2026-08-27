@@ -14,6 +14,7 @@ export default defineConfig({
                 "resources/js/experience.js",
                 "resources/js/tag.js",
                 "resources/js/project.js",
+                "resources/js/skills.js",
             ],
             refresh: true,
         }),

@@ -72,7 +72,7 @@
     </div>
 
     <!-- 🔻 BOTTOM NAVBAR -->
-    <div class="fixed bottom-0 w-full bg-gray-950 border-t border-gray-800 lg:hidden">
+    <div class="fixed bottom-0 w-full bg-gray-950 border-t border-gray-800 lg:hidden z-100">
         <div class="flex justify-around text-xs py-2">
             <button class="flex flex-col items-center">
                 <i class="ri-briefcase-line"></i>

@@ -95,3 +95,17 @@ div.dt-button-collection .dt-button.active * {
     border-radius: 8px;
     margin: 1rem 0;
 }
+
+#tags.dataTable,
+#tags.dataTable th,
+#tags.dataTable td {
+    border: 1px solid #dee2e6 !important;
+}
+
+#tags.dataTable tbody td {
+    border-top: 1px solid #dee2e6 !important;
+}
+
+#tags.dataTable thead th {
+    border-bottom: 1px solid #dee2e6 !important;
+}

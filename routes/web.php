@@ -8,6 +8,7 @@ use App\Http\Controllers\AppSettingController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\SkillsController;
 
 Route::group(['prefix' => 'portfolio'], function () {
     Route::get('/', [LandingPageController::class, 'index'])->name('portfolio');
@@ -93,6 +94,23 @@ Route::prefix('admin')->group(function () {
             Route::put('/update/{id}', [ProjectController::class, 'update'])
                 ->name('update');
             Route::delete('/destroy/{id}', [ProjectController::class, 'destroy'])
+                ->name('destroy');
+        });
+
+        Route::group(['prefix' => 'skills', 'as' => 'admin.skills.'], function () {
+            Route::get('/', [SkillsController::class, 'index'])
+                ->name('index');
+            // DataTables route
+            Route::get('/data', [SkillsController::class, 'data'])
+                ->name('data');
+            // CRUD routes
+            Route::post('/store', [SkillsController::class, 'store'])
+                ->name('store');
+            Route::get('/show/{id}', [SkillsController::class, 'show'])
+                ->name('show');
+            Route::put('/update/{id}', [SkillsController::class, 'update'])
+                ->name('update');
+            Route::delete('/destroy/{id}', [SkillsController::class, 'destroy'])
                 ->name('destroy');
         });
 
