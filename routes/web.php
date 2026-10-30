@@ -103,6 +103,18 @@ Route::prefix('admin')->group(function () {
             // DataTables route
             Route::get('/data', [SkillsController::class, 'data'])
                 ->name('data');
+            Route::get('/categories', [SkillsController::class, 'categories'])
+                ->name('categories');
+            Route::get('/category/data', [SkillsController::class, 'categoryData'])
+                ->name('category.data');
+            Route::post('/category/store', [SkillsController::class, 'storeCategory'])
+                ->name('category.store');
+            Route::get('/category/show/{id}', [SkillsController::class, 'showCategory'])
+                ->name('category.show');
+            Route::put('/category/update/{id}', [SkillsController::class, 'updateCategory'])
+                ->name('category.update');
+            Route::delete('/category/destroy/{id}', [SkillsController::class, 'destroyCategory'])
+                ->name('category.destroy');
             // CRUD routes
             Route::post('/store', [SkillsController::class, 'store'])
                 ->name('store');

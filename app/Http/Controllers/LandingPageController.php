@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Log;
 use App\Models\Experience;
 use App\Models\Project;
+use App\Models\Skill;
 use Illuminate\Support\Facades\Storage;
 
 class LandingPageController extends Controller
@@ -27,7 +28,11 @@ class LandingPageController extends Controller
             ->orderByDesc('created_at')
             ->get();
 
+        $skills = Skill::with('category')
+            ->orderBy('skill_category_id')
+            ->orderBy('name')
+            ->get();
 
-        return view('landingPage.page.index', compact('profile', 'experiences', 'projects'));
+        return view('landingPage.page.index', compact('profile', 'experiences', 'projects', 'skills'));
     }
 }
