@@ -1,7 +1,7 @@
 <div class="-mx-4 md:mx-0">
     <div class="h-36 md:h-56 bg-gray-800 overflow-hidden lg:rounded-t-3xl">
-        <!-- Panggil file .webp, tambahkan fetchpriority dan loading -->
-        <img src="{{ asset('assets/cover.webp') }}" alt="Cover Portfolio" class="w-full h-full object-cover"
+        <img src="{{ $profile->background_image ? Storage::url($profile->background_image) : asset('assets/cover.webp') }}"
+            alt="Cover Portfolio" class="w-full h-full object-cover"
             fetchpriority="high" loading="eager">
     </div>
 </div>

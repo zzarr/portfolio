@@ -155,9 +155,10 @@
                                     value="{{ optional($profile)->github_url }}" name="github_url">
                             </div>
                             <div class="form-group mb-3">
-                                <label class="form-label">Backround image</label>
+                                <label class="form-label">Background image</label>
                                 <input type="file" id="input-file-now-custom-1" class="dropify"
-                                    data-default-file="{{ asset('assets/cover.jpg') }}" name="background_image" />
+                                    data-default-file="{{ optional($profile)->background_image ? Storage::url($profile->background_image) : asset('assets/cover.webp') }}"
+                                    accept="image/jpeg,image/png" name="background_image" />
                             </div>
 
                         </div>
