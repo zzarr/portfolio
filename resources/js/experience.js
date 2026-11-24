@@ -9,11 +9,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
 
-        // 1. Matikan responsive agar kolom tidak di-collapse (disembunyikan)
-        responsive: false,
-
-        // 2. Aktifkan scroll horizontal
-        scrollX: true,
+        responsive: true,
 
         pageLength: 10,
         lengthChange: true,
@@ -75,6 +71,7 @@ $(document).ready(function () {
             {
                 data: "action",
                 name: "action",
+                className: "all",
                 orderable: false,
                 searchable: false,
             },

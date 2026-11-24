@@ -111,15 +111,6 @@
            shadow-lg shadow-black/30
            transition-all duration-300 ease-in-out">
 
-        <a href="#home"
-            class="relative group text-gray-300 hover:text-white hover:scale-110 transition-all duration-200">
-            <i class="ri-home-6-line text-lg"></i>
-            <span
-                class="absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 border border-gray-700 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                Home
-            </span>
-        </a>
-
         <a href="#experience"
             class="relative group text-gray-300 hover:text-white hover:scale-110 transition-all duration-200">
             <i class="ri-briefcase-line text-lg"></i>
@@ -135,6 +126,15 @@
             <span
                 class="absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 border border-gray-700 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 Projects
+            </span>
+        </a>
+
+        <a href="#home"
+            class="relative group text-gray-300 hover:text-white hover:scale-110 transition-all duration-200">
+            <i class="ri-home-6-line text-lg"></i>
+            <span
+                class="absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-md bg-gray-900 border border-gray-700 px-2 py-1 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                Home
             </span>
         </a>
 
